@@ -34,6 +34,13 @@ public function entreprise(){
 
 
 
+
+public function candidatures()
+{
+    return $this->hasMany(Candidature::class);
+}
+
+
 // public function getrouteKeyName(){
 //     return 'slug';
 // }

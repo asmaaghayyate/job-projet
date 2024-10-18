@@ -13,14 +13,9 @@ class EmployeurController extends Controller
 {
     //
 
-    public function masteremployeur(){
-
-        return view("layouts.masteremployeur");
-    }
-
  public function messageannance(){
 
-        return view("content.employeur.messageannance");
+        return view("content.profile.messageannance");
     }
 
 

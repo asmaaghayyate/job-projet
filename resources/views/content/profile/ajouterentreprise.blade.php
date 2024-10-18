@@ -1,4 +1,4 @@
-@extends('content.employeur.profileemployeur')
+@extends('content.profile.profileemployeur')
 
 
 @section('profile')
@@ -46,7 +46,8 @@
 			</label>
 			<span class="fake-input">No file selected</span>
         </div>
-			<textarea name="description" id="description" cols="30" rows="10" placeholder="Description" style="margin-bottom: 2%;"></textarea>
+			<textarea name="description" id="description"
+            cols="30" rows="10" placeholder="Description" style="margin-bottom: 2%;"></textarea>
 <button type="submit" class="button">Ajouter</button>
 </form>
 

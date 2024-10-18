@@ -15,7 +15,6 @@ class AnnanceController extends Controller
     $entreprises=Entreprise::where('user_id',Auth::user()->id)->get();
 
     //dd($entreprises->name);
-    return view("content.employeur.publierannance",compact('entreprises'));
+    return view("content.profile.publierannance",compact('entreprises'));
   }
 }
- 

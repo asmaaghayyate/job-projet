@@ -12,9 +12,21 @@ class Candidature extends Model
 
     protected $fillable = [
         'user_id',
-        'annonce_id',
+        'annance_id',
         'lettre_motivation',
 
     ];
+
+
+    public function annance()
+    {
+        return $this->belongsTo(Annance::class);
+    }
+
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
 
 }

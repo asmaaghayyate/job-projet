@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             // Ajoute d'autres seeders ici si nécessaire
         ]);
 
-
+/*
         \App\Models\User::factory()
         ->count(3)
         ->has(Entreprise::factory()->count(4) // Chaque utilisateur a 2 entreprises
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             )
         )
         ->create();
-
+*/
 
 
     }

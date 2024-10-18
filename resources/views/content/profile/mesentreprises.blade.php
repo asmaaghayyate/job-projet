@@ -1,4 +1,4 @@
-@extends('content.employeur.profileemployeur')
+@extends('content.profile.profileemployeur')
 
 
 @section('profile')
@@ -34,10 +34,11 @@
 
 
 		<tr>
-			<td >{{{$mesentreprise->name}}}</td>
+			<td >{{$mesentreprise->name}}</td>
 			<td><img src="{{asset("storage/".$mesentreprise->image)}}"  style="height: 50px; width: 50px;"></td>
-			<td >{{{$mesentreprise->description}}}</td>
-			<td>{{{$mesentreprise->adresse}}}</td>
+			<td >{!!$mesentreprise->description!!}</td>
+
+			<td>{{$mesentreprise->adresse}}</td>
 			<td >
                  <a href="" class="btn btn-info btn-sm"
                 style="margin-right: 5px"><i class="fa-solid fa-pen "></i></a>

@@ -269,12 +269,8 @@ color: rgb(89, 89, 89);
 
                 <li><a href="#">Pages</a>
                     <ul>
-                        <li><a href="job-page.html">Job Page</a></li>
-                        <li><a href="job-page-alt.html">Job Page Alternative</a></li>
-                        <li><a href="resume-page.html">Resume Page</a></li>
-                        <li><a href="shortcodes.html">Shortcodes</a></li>
-                        <li><a href="pricing-tables.html">Pricing Tables</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{{route('lescandidatures')}}">Les candidatures</a></li>
+
                     </ul>
                 </li>
 

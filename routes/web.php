@@ -111,6 +111,7 @@ Route::get('profile/mesannances/{user}','mesannances') ->name('mesannances');
 });
 
 
+
 Route::get('/publierannance',[AnnanceController::class,'publierannance'])
 ->name('publierannance')->middleware('auth');
 
@@ -125,9 +126,17 @@ Route::post('/profile/update','update') ->name('update.profile');
 });
 
 
-Route::post('/candidature/store{annance}',[CandidatureController::class,'store'])
+
+Route::post('/candidature/store/{annance}',[CandidatureController::class,'store'])
 ->name('store.candidature')->middleware('auth');
 
 Route::get('/candidature/message',[CandidatureController::class,'messagecandidature'])
 ->name('messagecandidature')
 ->middleware('auth');
+
+
+
+Route::get('/candidatures/index',[CandidatureController::class,'index'])
+->name('lescandidatures')
+->middleware('auth');
+

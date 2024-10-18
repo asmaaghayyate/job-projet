@@ -73,7 +73,7 @@
 
                             <ul>
                                 <i class="fas fa-folder icon-color" style="font-size: 16px;"></i>
-                                <a href="{{route('mesannances',Auth::user()->id)}}"> &nbsp<strong>Mes Annances</strong></a>
+              <a href="{{route('mesannances',Auth::user()->id)}}"> &nbsp<strong>Mes Annances</strong></a>
 
                             </ul>
 

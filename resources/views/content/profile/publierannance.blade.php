@@ -23,21 +23,39 @@
         <div class="sixteen columns">
             <div class="submit-page">
 
-
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
  <form action="{{route('store.annance')}}" method="post">
  @csrf
                 <!-- Title -->
-                <div class="form">
-                    <h5><strong>Titre de l'emploi</strong></h5>
-                    <input class="search-field" type="text" placeholder="titre" name="titre" id="titre"/>
+
+
+                <div class="row" style=";margin-left:0%;">
+                    <div class="col-md-3" style="">
+
+                   <h5>  <strong> Titre de l'emploi <span style="color: red">*</span></strong> </h5>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="search-field" type="text" placeholder="titre" name="titre" id="titre"/>
+                    </div>
+
                 </div>
 
 
 
-                <!-- Location -->
-                <div class="form">
-                    <div class="select">
-                        <h5><strong>Ville</strong></h5>
+                <div class="row" style=";margin-left:0%;">
+                    <div class="col-md-3" style="">
+
+                        <h5>  <strong>Ville <span style="color: red">*</span></strong> </h5>
+                    </div>
+                    <div class="col-md-9">
                         <select data-placeholder="Choisir ville" class="chosen-select" multiple name="ville" id="ville">
                             <option value="">Toutes les villes</option>
                             <option value="Agadir">Agadir</option>
@@ -120,34 +138,54 @@
                             <option value="Youssoufia">Youssoufia</option>
                             <option value="Zagora">Zagora</option>
                         </select>
+                    </div>
+
                 </div>
-            </div>
-                <div class="form">
-                    <div class="select">
-                        <h5><strong>Entreprise</strong></h5>
+
+                <!-- Location -->
+
+
+
+                <div class="row" style=";margin-left:0%;">
+                    <div class="col-md-3" style="">
+
+                        <h5>   <strong>Entreprise <span style="color: red">*</span></strong> </h5>
+                    </div>
+                    <div class="col-md-9">
                         <select data-placeholder="Choisir entreprise" class="chosen-select" multiple name="entreprise_id" id="entreprise_id">
                             @foreach ($entreprises as $entreprise)
                             <option value="{{$entreprise->id}}">{{$entreprise->name}}</option>
                             @endforeach
                         </select>
-                    </div>
+                     </div>
+
                 </div>
-                <div class="form">
-                    <div class="select">
-                        <h5><strong>Type emploi</strong></h5>
+
+
+
+
+                <div class="row" style=";margin-left:0%;">
+                    <div class="col-md-3" style="">
+
+                        <h5>    <strong>Type emploi <span style="color: red">*</span></strong> </h5>
+                    </div>
+                    <div class="col-md-9">
                         <select data-placeholder="Choisir type" class="chosen-select" multiple name="type_emploi" id="type_emploi">
                             <option value="temps plein">Temps plein</option>
                             <option value="temps partiel">Temps partiel</option>
                             <option value="stage">Stage</option>
 
                         </select>
-                    </div>
+                     </div>
+
                 </div>
 
-                <!-- Choose Category -->
-                <div class="form">
-                    <div class="select">
-                        <h5><strong>Categorie</strong></h5>
+                <div class="row" style=";margin-left:0%;">
+                    <div class="col-md-3" style="">
+
+                        <h5>  <strong>Categorie <span style="color: red">*</span></strong> </h5>
+                    </div>
+                    <div class="col-md-9">
                         <select data-placeholder="Choisir categorie" class="chosen-select" multiple name="categorie" id="categorie">
 
                             <option value="developpeurs web">Développeurs Web</option>
@@ -171,16 +209,29 @@
                                 <option value="sante et bien etre">Santé et Bien-être</option>
                                 <option value="nutritionnistes">Nutritionnistes</option>
                         </select>
+                     </div>
+
+                </div>
+
+                <div class="row" style=";margin-left:0%;">
+                    <div class="col-md-3" style="">
+
+                        <h5> <strong>Description <span style="color: red">*</span></strong> </h5>
                     </div>
-                </div>
+                    <div class="col-md-9">
+                        <textarea  name="description" id="description" cols="40"
+                        rows="3" id="summary"  ></textarea>
 
-                <!-- Description -->
-                <div class="form">
-                    <h5><strong>Description</strong></h5>
-    <textarea  name="description" id="description" cols="40"
-    rows="3" id="summary"  ></textarea>
+                     </div>
 
                 </div>
+
+
+
+
+
+
+
       <button type="submit" class="button">Ajouter</button>
  </form>
 

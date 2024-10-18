@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('candidatures', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade'); // Référence à l'utilisateur
-            $table->foreignId('annonce_id')->nullable()->constrained('annances')->onDelete('cascade');
+            $table->foreignId('annance_id')->nullable()->constrained('annances')->onDelete('cascade');
             $table->text('lettre_motivation')->nullable(); // Chemin de la lettre de motivation
             $table->enum('etat', ['publiée', 'en attente', 'fermée'])->default('en attente');
             $table->timestamps();

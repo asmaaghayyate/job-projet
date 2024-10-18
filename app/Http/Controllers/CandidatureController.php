@@ -14,7 +14,7 @@ class CandidatureController extends Controller
 
 public function store(Request $request,Annance $annance){
 
-//dd($request);
+//dd($annance->id);
 $user =Auth::user();
 
 
@@ -24,18 +24,26 @@ $values=$request->validate([
 'sexe'=>'required',
 'niveau_etude'=>'required',
 'annees_experiences'=>'required',
-'cv'=>'required|mimes:pdf',
+
 ]);
 
+if (!$user->cv) {
+    $values['cv'] = 'required|mimes:pdf';
+} else {
+    $values['cv'] = 'nullable|mimes:pdf'; // Si un CV existe, le champ peut être vide
+}
 
+if ($request->hasFile('cv')) {
 $values['cv']=$request->file('cv')->store('cvs','public');
-
+}
 
 $user->update($values);
 
+
 $values2['lettre_motivation']=$request->lettre_motivation;
 $values2['user_id']=Auth::user()->id;
-$values2['annonce_id']=$annance->id;
+$values2['annance_id']="$annance->id";
+//dd($values2);
 Candidature::create($values2);
 
 return redirect()->route('messagecandidature')
@@ -46,11 +54,22 @@ return redirect()->route('messagecandidature')
 
 
 public function messagecandidature(){
-    return view("content.employeur.messagecandidature");
-
+    return view("content.profile.messagecandidature");
 }
 
+public function index(){
 
+
+    $userId = Auth::user()->id; // Récupérer l'ID de l'utilisateur connecté
+    $candidatures = Candidature::with(['annance', 'user']) // Charger les annonces et les utilisateurs
+    ->whereHas('annance', function ($query) use ($userId) {
+        $query->where('user_id', $userId);
+    })
+    ->get();
+
+return view('content.candidature.lescandidats',compact('candidatures'));
+
+}
 
 
 }

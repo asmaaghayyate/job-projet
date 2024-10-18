@@ -49,7 +49,7 @@
                                         <td>{{ $item->entreprise?->name }}</td>
                                         <td>{{ $item->titre }}</td>
                                          <td>{{ $item->created_at }}</td>
-                                        <td>{{ Str::limit($item->description, 25, '...')  }}</td>
+                                        <td>{!! Str::limit($item->description, 25, '...')  !!}</td>
                                         <td>{{ $item->ville }}</td>
                                         <td>{{ $item->categorie }}</td>
 
