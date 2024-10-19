@@ -84,7 +84,7 @@
 			</label>
 			<span class="fake-input" >Aucun fichier sélectionné</span>
         <a href="{{ asset('storage/' .Auth::user()->cv) }}" target="_blank">
-                {{ basename(Auth::user()->cv) }}
+                {{ basename(Auth::user()->cv) }}</a>
         </div>
         {{-- <embed src="{{ asset('storage/' .Auth::user()->cv) }}" type="application/pdf" width="400" height="600"> --}}
 

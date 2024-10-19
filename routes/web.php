@@ -60,7 +60,7 @@ Route::post('/admin/updatetat/{annance}',[AnnancesController::class,'updatetat']
 
 Route::get('/', function () {
     $toutlesemploiscount=Annance::all()->count();
-    $dernieresannances = Annance::latest()->take(5)->get();
+    $dernieresannances = Annance::where('etat','publiée')->latest()->take(5)->get();
  return view('index',compact('toutlesemploiscount','dernieresannances'));
     })->name('index');
 
@@ -76,23 +76,27 @@ Route::post('/register', 'register')->name('register');
 });
 
 
+
 Route::post('logout', [AuthController::class,'logout'])->name('logout');
+
+
+
+
+
+
+Route::controller(EmploisController::class)->group(function () {
+Route::post('/emplois','emplois')->name('emplois');
+Route::get('/annance/{slug}','showemplois')->name('showemplois');
+});
+
+
+
 
 
 
 
 Route::get('/profile/postuler/{annance}', [ProfileController::class,'postuleremplois'])
 ->name('postuleremplois')->middleware('auth');
-
-
-
-
-
-Route::post('/emplois',[EmploisController::class,'emplois'])->name('emplois');
-
-Route::get('/annance/{slug}',[EmploisController::class,'showemplois'])
-->name('showemplois');
-
 
 
 
@@ -140,3 +144,7 @@ Route::get('/candidatures/index',[CandidatureController::class,'index'])
 ->name('lescandidatures')
 ->middleware('auth');
 
+
+Route::post('/candidatures/update/{candidature}',[CandidatureController::class,'updatetatcandidature'])
+->name('updatetatcandidature')
+->middleware('auth');

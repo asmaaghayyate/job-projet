@@ -8,7 +8,19 @@
 	<div class="container">
 		<div class="ten columns">
 			<span><a href="browse-jobs.html">{{$annance->categorie}}</a></span>
-			<h2>{{$annance->titre}}</h2>
+			<h2>{{$annance->titre}}
+ @if ($annance->type_emploi=="stage")
+                        <span class="internship">
+                        @elseif ($annance->type_emploi=="temps partiel")
+                        <span class="part-time">
+                         @elseif ($annance->type_emploi=="temps plein")
+                        <span class="full-time">
+                        @endif
+
+                    {{$annance->type_emploi}}</span></h2>
+
+
+
 		</div>
 
 	</div>

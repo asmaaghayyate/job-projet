@@ -71,7 +71,7 @@
                                                         <option value="fermée" {{ $item->etat === 'fermée' ? 'selected' : '' }}>Fermée</option>
                                                     </select>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary btn-sm">Mettre à jour l'état</button>
+                                                <button type="submit" class="btn btn-primary btn-sm">Modifier</button>
                                             </form>
 
 

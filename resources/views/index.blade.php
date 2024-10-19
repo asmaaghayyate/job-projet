@@ -121,7 +121,7 @@ Nous avons plus de   <strong>{{ $toutlesemploiscount }} </strong> offres d'emplo
 						<span><i class="fa fa-map-marker"></i> {{$dernieresannance->ville}}</span>
 
 					</div>
-                    <p> {{ Str::limit($dernieresannance->description, 170, '...')  }}</p>
+                    <p> {!! Str::limit($dernieresannance->description, 170, '...')  !!}</p>
 				</div>
 	</a>
 				<div class="clearfix"></div>
