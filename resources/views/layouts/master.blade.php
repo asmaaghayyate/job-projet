@@ -30,6 +30,9 @@
 <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/css/colors/green.css')}}" id="colors">
 
+
+
+
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->

@@ -6,6 +6,7 @@ use App\Models\Annance;
 use App\Models\Entreprise;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileemployeurController extends Controller
 {
@@ -28,8 +29,10 @@ class ProfileemployeurController extends Controller
     }
 
 
-public function mesentreprises(User $user){
-    $mesentreprises=Entreprise::where('user_id', $user->id)
+public function mesentreprises(){
+
+    $user = Auth::user()->id;
+    $mesentreprises=Entreprise::where('user_id', $user)
     ->get();
     return view('content.profile.mesentreprises',compact('mesentreprises'));
 }
@@ -37,12 +40,13 @@ public function mesentreprises(User $user){
 
 
 
-public function mesannances(User $user){
+public function mesannances(){
+    $user = Auth::user()->id;
     $mesannancespubliee=Annance::where('etat','publiée')
-    ->where('user_id', $user->id)
+    ->where('user_id', $user)
     ->get();
     $mesannancesenattente=Annance::where('etat','en attente')
-    ->where('user_id', $user->id)
+    ->where('user_id', $user)
     ->get();
     return view('content.profile.mesannances',compact('mesannancespubliee','mesannancesenattente'));
 }

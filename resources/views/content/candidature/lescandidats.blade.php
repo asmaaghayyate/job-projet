@@ -20,10 +20,11 @@
 <div class="container">
 
 
+
 @if ($candidatures->count()==0)
 <h3><p>Vous n'avez aucune candidatures pour l'instant.</p></h3>
 @else
-<div class="sixteen columns">
+
 
 	<table class="manage-table resumes responsive-table">
 
@@ -58,9 +59,9 @@
                         <td>{{$candidature->user->annees_experiences}}</td>
                         <td>{!!$candidature->lettre_motivation!!}</td>
                         <td>
-                        <span class="badge badge-{{ \App\Enums\EtatEnum::getColor($candidature->etat) }}">
+                        <span class="badge-{{ \App\Enums\EtatEnum::getColor($candidature->etat) }}">
                             {{ $candidature->etat }}
-                         </span> 
+                         </span>
                         </td>
                         <td><form action="{{route('updatetatcandidature',$candidature->id)}}" method="POST">
                             @csrf
@@ -82,10 +83,7 @@
 
 
 
-	</div>
 @endif
-
-
 
 
 

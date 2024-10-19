@@ -87,4 +87,25 @@ public function updatetatcandidature(Request $request,Candidature $candidature){
      }
 
 
+public function mescandidatures(){
+
+    $user = Auth::user()->id;
+
+    $mescandidaturespubliee=Candidature::where('etat','publiée')
+    ->where('user_id', $user)
+    ->get();
+    $mescandidaturesenattente=Candidature::where('etat','en attente')
+    ->where('user_id', $user)
+    ->get();
+
+    return view('content.profile.mescandidatures',
+    compact('mescandidaturespubliee','mescandidaturesenattente'));
 }
+
+
+
+}
+
+
+
+

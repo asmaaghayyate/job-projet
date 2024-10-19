@@ -108,8 +108,8 @@ Route::get('/profile/ajouter-entreprise', 'ameliorerprofileemployeur')
 Route::get('/profile/ameliorer-profile', 'ameliorerprofile')
 ->name('ameliorerprofile');
 
-Route::get('profile/mesentreprises/{user}','mesentreprises') ->name('mesentreprises');
-Route::get('profile/mesannances/{user}','mesannances') ->name('mesannances');
+Route::get('profile/mesentreprises','mesentreprises') ->name('mesentreprises');
+Route::get('profile/mesannances','mesannances') ->name('mesannances');
 
 
 });
@@ -131,20 +131,22 @@ Route::post('/profile/update','update') ->name('update.profile');
 
 
 
-Route::post('/candidature/store/{annance}',[CandidatureController::class,'store'])
-->name('store.candidature')->middleware('auth');
-
-Route::get('/candidature/message',[CandidatureController::class,'messagecandidature'])
-->name('messagecandidature')
-->middleware('auth');
 
 
+Route::controller(CandidatureController::class)->middleware(['auth'])->group(function () {
 
-Route::get('/candidatures/index',[CandidatureController::class,'index'])
-->name('lescandidatures')
-->middleware('auth');
+Route::post('/candidature/store/{annance}','store')->name('store.candidature');
+
+Route::get('/candidature/message','messagecandidature')->name('messagecandidature');
 
 
-Route::post('/candidatures/update/{candidature}',[CandidatureController::class,'updatetatcandidature'])
-->name('updatetatcandidature')
-->middleware('auth');
+Route::get('/candidatures/index','index')->name('lescandidatures');
+Route::get('/mescandidatures/index','mescandidatures')->name('mescandidatures');
+
+
+Route::post('/candidatures/update/{candidature}','updatetatcandidature')
+->name('updatetatcandidature');
+
+
+
+});

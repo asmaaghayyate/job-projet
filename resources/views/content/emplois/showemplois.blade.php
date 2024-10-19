@@ -9,7 +9,7 @@
 		<div class="ten columns">
 			<span><a href="browse-jobs.html">{{$annance->categorie}}</a></span>
 			<h2>{{$annance->titre}}
- @if ($annance->type_emploi=="stage")
+                      @if ($annance->type_emploi=="stage")
                         <span class="internship">
                         @elseif ($annance->type_emploi=="temps partiel")
                         <span class="part-time">
