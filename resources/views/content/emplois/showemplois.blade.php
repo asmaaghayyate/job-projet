@@ -20,7 +20,6 @@
                     {{$annance->type_emploi}}</span></h2>
 
 
-
 		</div>
 
 	</div>
@@ -46,7 +45,13 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
+                    <h3><strong>Employeur</strong>
 
+                        <p class="margin-reset">
+                            {{$annance->user->name}}
+                        </p>
+
+                    </h3>
                 <h3><strong>Description du poste</strong>
 
                     <p class="margin-reset">

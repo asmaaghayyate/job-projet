@@ -253,7 +253,7 @@ color: rgb(89, 89, 89);
 
 <!-- Header
 ================================================== -->
-<header style="background-color: #53b427">
+<header style="">
 <div class="container">
     <div class="sixteen columns">
 
@@ -266,8 +266,7 @@ color: rgb(89, 89, 89);
         <nav id="navigation" class="menu">
             <ul id="responsive">
 
-                <li><a href="{{ route('index') }}">{{ __('navbar.home') }}</a></li>
-
+                <li><a href="{{ route('index') }}">{{ __('navbar.home') }}</a></li> 
                 </li>
 
                 <li><a href="#">Pages</a>
