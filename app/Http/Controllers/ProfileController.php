@@ -14,6 +14,7 @@ class ProfileController extends Controller
 
 public function postuleremplois(Annance $annance){
 
+    
 return view('content.emplois.postuleremplois',compact('annance'));
 
 }

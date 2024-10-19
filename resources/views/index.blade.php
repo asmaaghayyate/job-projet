@@ -20,8 +20,8 @@
 				<h2>Trouver un emploi</h2>
                 <form action="{{route('emplois')}}" method="POST">
                  @csrf
-				<input type="text" class="ico-01" placeholder="Mot Cle de Categorie" name="categorie" id="categorie" required/>
-				<input type="text" class="ico-02" placeholder="Ville" name="ville" name="ville" required/>
+				<input type="text" class="ico-01" placeholder="Mot Cle de Categorie" name="categorie" id="categorie" />
+				<input type="text" class="ico-02" placeholder="Ville" name="ville" name="ville" />
 				<button type="submit"><i class="fa fa-search"></i></button>
                 </form>
 

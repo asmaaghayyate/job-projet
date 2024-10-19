@@ -96,7 +96,7 @@ Route::get('/annance/{slug}','showemplois')->name('showemplois');
 
 
 Route::get('/profile/postuler/{annance}', [ProfileController::class,'postuleremplois'])
-->name('postuleremplois')->middleware('auth');
+->name('postuleremplois')->middleware('auth','Verifypostule');
 
 
 

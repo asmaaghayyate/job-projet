@@ -17,8 +17,10 @@ public function emplois(Request $request){
 $annances=Annance::where('categorie','LIKE',"%".$request->categorie."%")
 ->orwhere('ville','LIKE',"%".$request->ville."%")
 ->orwhere('titre','LIKE',"%".$request->titre."%")
-
 ->paginate(10);
+
+
+
 
 $annancescount=Annance::where('categorie','LIKE',"%".$request->categorie."%")
 ->orwhere('ville','LIKE',"%".$request->ville."%")

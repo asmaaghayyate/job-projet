@@ -21,6 +21,7 @@ class AuthenticateAdmin
             // Rediriger vers la page de login si l'utilisateur n'est pas authentifié
             return redirect()->route('formloginadmin');  // ou '/admin/login'
         }
+
         return $next($request);
     }
 }
