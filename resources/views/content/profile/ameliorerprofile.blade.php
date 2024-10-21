@@ -1,4 +1,4 @@
-@extends('content.employeur.profileemployeur')
+@extends('content.profile.profileemployeur')
 
 
 @section('profile')

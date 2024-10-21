@@ -24,6 +24,7 @@ class ProfileemployeurController extends Controller
         return view('content.profile.ajouterentreprise');
     }
 
+    
  public function ameliorerprofile(){
         return view('content.profile.ameliorerprofile');
     }

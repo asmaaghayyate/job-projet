@@ -14,19 +14,23 @@ public function emplois(Request $request){
 
 
 
-$annances=Annance::where('categorie','LIKE',"%".$request->categorie."%")
-->orwhere('ville','LIKE',"%".$request->ville."%")
-->orwhere('titre','LIKE',"%".$request->titre."%")
-->paginate(10);
+    $query = Annance::query();
+
+    if (!empty($request->categorie)) {
+        $query->where('categorie', 'like', trim($request->categorie) . "%");
+    }
+
+    if (!empty($request->ville)) {
+        $query->orWhere('ville', 'like', trim($request->ville) . "%");
+    }
+
+    $annances = $query->paginate(10);
+//dd($annances);
 
 
 
+$annancescount=$query->count();
 
-$annancescount=Annance::where('categorie','LIKE',"%".$request->categorie."%")
-->orwhere('ville','LIKE',"%".$request->ville."%")
-->orwhere('titre','LIKE',"%".$request->titre."%")
-
-->count();
 
 $categories = $annances->pluck('categorie')->unique()->toArray();
 

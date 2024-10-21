@@ -34,11 +34,26 @@
 		<ul class="job-list full">
     @foreach ($annances as $annance )
             <li class="">
-                <a href="{{route('showemplois',$annance->id)}}">
+                <a href="{{route('showemplois',$annance->slug)}}">
 				<img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">
 				<div class="job-list-content">
+
 				<h4>	<strong>{{$annance->titre}}</strong> </h4>
+
 					<div class="job-icons">
+
+
+                        <h4>
+                            @if ($annance->type_emploi=="stage")
+                            <span class="internship">
+                            @elseif ($annance->type_emploi=="temps partiel")
+                            <span class="part-time">
+                             @elseif ($annance->type_emploi=="temps plein")
+                            <span class="full-time">
+                            @endif
+
+                        {{$annance->type_emploi}}</span></h4>
+
 						<span><i class="fa fa-calendar"></i> {{$annance->created_at}}</span>
 						<span><i class="fa fa-map-marker"></i> {{$annance->ville}}</span>
 
