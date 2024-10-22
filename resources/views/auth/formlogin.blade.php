@@ -7,7 +7,7 @@
 	<div class="container">
 
 		<div class="sixteen columns">
-			<h2>Mon Espace Candidat</h2>
+			<h2>Mon Espace</h2>
 			<nav id="breadcrumbs">
 				<ul>
 					<li>You are here:</li>
@@ -74,6 +74,10 @@
 
 
 				</form>
+
+                <a href="{{route('google-auth')}}" class="btn btn-google">
+                    <i class="fab fa-google"></i> Connexion avec Google
+                </a>
 			</div>
 
 				<!-- Register -->

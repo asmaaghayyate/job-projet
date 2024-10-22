@@ -49,7 +49,7 @@
 ---------------------------------------------------------------------- */
 
 .badge {
-    font-size: 10px !important;
+    font-size: 15px !important;
     font-weight: 500 !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     padding: 3px 5px 4px !important; }
@@ -69,6 +69,8 @@
   .badge-success-transparent {
     background-color: #d4f2e1 !important;
     color: #22c03c; }
+
+
 
   .badge-teal-transparent {
     background-color: #d2f5f5 !important;
@@ -165,6 +167,18 @@
     color: #fff;
     background-color: #22c03c; }
 
+.badge-recu {
+    color: #fff;
+    background-color: #223ac0; }
+
+.badge-entretien {
+    padding: 5px 10px;
+    font-size: 10px;
+    color: #fff;
+    background-color: #8c92b8; }
+
+
+
   a.badge-success:hover {
     color: #fff;
     background-color: #2a7d01; }
@@ -200,6 +214,8 @@
   .badge-warning {
     color: #242f48;
     background-color: #fbbc0b; }
+
+
 
   a.badge-warning:hover, a.badge-warning:focus {
     color: #242f48;
@@ -328,6 +344,9 @@
   @media print {
     .badge {
       border: 1px solid #000; } }
+
+
+
 
 
 

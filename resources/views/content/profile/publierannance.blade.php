@@ -43,12 +43,43 @@
                    <h5>  <strong> Titre de l'emploi <span style="color: red">*</span></strong> </h5>
                     </div>
                     <div class="col-md-9">
-                        <input class="search-field" type="text" placeholder="titre" name="titre" id="titre"/>
+                        <input class="search-field" type="text" placeholder="Titre" name="titre" id="titre"/>
                     </div>
 
                 </div>
 
+                <div class="row" style=";margin-left:0%;">
+                    <div class="col-md-3" style="">
 
+                        <h5>  <strong>Categorie <span style="color: red">*</span></strong> </h5>
+                    </div>
+                    <div class="col-md-9">
+                        <select data-placeholder="Choisir categorie" class="chosen-select" multiple name="categorie" id="categorie">
+
+                            <option value="developpeurs web">Développeurs Web</option>
+                                <option value="developpeurs mobiles">Développeurs Mobiles</option>
+                                <option value="administrateurs systeme">Administrateurs Système</option>
+                                <option value="design et creation">Design et Création</option>
+                                <option value="design graphique">Designers Graphiques</option>
+                                <option value="photographe">Photographe</option>
+                                <option value="redaction et marketing">Rédaction et Marketing</option>
+                                <option value="redacteurs">Rédacteurs</option>
+                                <option value="marketing digital">Spécialistes en Marketing Digital</option>
+                                <option value="services aux entreprises">Services aux Entreprises</option>
+                                <option value="assistants virtuels">Assistants Virtuels</option>
+                                <option value="agents de service client">Agents de Service Client</option>
+                                <option value="finance et comptabilite">Finance et Comptabilité</option>
+                                <option value="comptables">Comptables</option>
+                                <option value="vente et commercial">Vente et Commercial</option>
+                                <option value="representants commerciaux">Représentants Commerciaux</option>
+                                <option value="education et formation">Éducation et Formation</option>
+                                <option value="formateurs">Formateurs</option>
+                                <option value="sante et bien etre">Santé et Bien-être</option>
+                                <option value="nutritionnistes">Nutritionnistes</option>
+                        </select>
+                     </div>
+
+                </div>
 
                 <div class="row" style=";margin-left:0%;">
                     <div class="col-md-3" style="">
@@ -180,38 +211,7 @@
 
                 </div>
 
-                <div class="row" style=";margin-left:0%;">
-                    <div class="col-md-3" style="">
 
-                        <h5>  <strong>Categorie <span style="color: red">*</span></strong> </h5>
-                    </div>
-                    <div class="col-md-9">
-                        <select data-placeholder="Choisir categorie" class="chosen-select" multiple name="categorie" id="categorie">
-
-                            <option value="developpeurs web">Développeurs Web</option>
-                                <option value="developpeurs mobiles">Développeurs Mobiles</option>
-                                <option value="administrateurs systeme">Administrateurs Système</option>
-                                <option value="design et creation">Design et Création</option>
-                                <option value="design graphique">Designers Graphiques</option>
-                                <option value="photographe">Photographe</option>
-                                <option value="redaction et marketing">Rédaction et Marketing</option>
-                                <option value="redacteurs">Rédacteurs</option>
-                                <option value="marketing digital">Spécialistes en Marketing Digital</option>
-                                <option value="services aux entreprises">Services aux Entreprises</option>
-                                <option value="assistants virtuels">Assistants Virtuels</option>
-                                <option value="agents de service client">Agents de Service Client</option>
-                                <option value="finance et comptabilite">Finance et Comptabilité</option>
-                                <option value="comptables">Comptables</option>
-                                <option value="vente et commercial">Vente et Commercial</option>
-                                <option value="representants commerciaux">Représentants Commerciaux</option>
-                                <option value="education et formation">Éducation et Formation</option>
-                                <option value="formateurs">Formateurs</option>
-                                <option value="sante et bien etre">Santé et Bien-être</option>
-                                <option value="nutritionnistes">Nutritionnistes</option>
-                        </select>
-                     </div>
-
-                </div>
 
                 <div class="row" style=";margin-left:0%;">
                     <div class="col-md-3" style="">

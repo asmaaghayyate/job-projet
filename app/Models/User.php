@@ -26,6 +26,8 @@ class User extends Authenticatable
         'niveau_etude',
         'annees_experiences',
         'phone',
+        'social_id',
+        'social_type'
     ];
 
     /**

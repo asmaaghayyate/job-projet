@@ -76,12 +76,13 @@ public function updatetatcandidature(Request $request,Candidature $candidature){
 
     //dd($request->etat);
     $request->validate([
-     'etat' => 'required|in:publiée,en attente,fermée',
+     'etat' => 'required|in:refusé,en attente,reçu,accepté,en attente entretien',
  ]);
       $candidature->etat = $request->etat;
       $candidature->save();
 
- return redirect()->route('lescandidatures')->with('success', 'L\'état de la candidature a été mis à jour avec succès.');
+ return redirect()->route('lescandidatures')
+ ->with('success', 'L\'état de la candidature a été mis à jour avec succès.');
 
 
      }

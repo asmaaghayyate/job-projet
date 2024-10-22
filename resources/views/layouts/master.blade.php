@@ -21,6 +21,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 <!-- Optionnel : JavaScript de Bootstrap -->
@@ -47,10 +48,30 @@
 </style>
 
 <style>
-    .icon-color {
-        color: #53b427; /* Change ici pour la couleur souhaitée */
-        font-size: 24px; /* Ajuste la taille si nécessaire */
-    }
+
+
+.btn-google {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    background-color: #4285F4; /* Couleur de Google */
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-google i {
+    margin-right: 8px; /* Espacement entre l'icône et le texte */
+}
+
+.btn-google:hover {
+    background-color: #357AE8; /* Couleur au survol */
+}
+
+
+
+
+
 
 .css-ylydhb{
     color: rgb(89, 89, 89);
@@ -266,14 +287,16 @@ color: rgb(89, 89, 89);
         <nav id="navigation" class="menu">
             <ul id="responsive">
 
-                <li><a href="{{ route('index') }}">{{ __('navbar.home') }}</a></li> 
+                <li><a href="{{ route('index') }}">{{ __('navbar.home') }}</a></li>
                 </li>
 
                 <li><a href="#">Pages</a>
+                    @if(Auth::check())
                     <ul>
                         <li><a href="{{route('lescandidatures')}}">Les candidatures</a></li>
 
                     </ul>
+                     @endif
                 </li>
 
 

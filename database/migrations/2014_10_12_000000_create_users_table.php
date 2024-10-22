@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('social_id')->nullable(); // Rendre ce champ nullable
+            $table->string('social_type')->nullable();
             // $table->enum('role', ['admin', 'employeur', 'candidat']);
-            $table->string('phone', 20)->nullable(); 
+            $table->string('phone', 20)->nullable();
             $table->string('cv')->nullable();
             $table->string('sexe')->nullable();
             $table->string('niveau_etude')->nullable();

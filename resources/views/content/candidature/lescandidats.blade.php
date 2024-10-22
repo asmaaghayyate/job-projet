@@ -29,6 +29,7 @@
 	<table class="manage-table resumes responsive-table">
 
 			<tr>
+                <th>Titre Annance</th>
 				<th><i class="fa fa-user"></i> Name</th>
 				<th><i class="fa fa-file-text"></i> Email</th>
 				<th><i class="fa fa-map-marker"></i> Phone</th>
@@ -45,7 +46,7 @@
 
             @foreach ( $candidatures as $candidature )
             <tr>
-
+ <td><a href="{{route('showemplois',$candidature->annance->slug)}}">{{ $candidature->annance->titre }}</a></td>
                       <td>{{ $candidature->user->name }}</td>
                         <td>{{$candidature->user->email}}</td>
                         <td>{{$candidature->user->phone}}</td>
@@ -59,7 +60,7 @@
                         <td>{{$candidature->user->annees_experiences}}</td>
                         <td>{!!$candidature->lettre_motivation!!}</td>
                         <td>
-                        <span class="badge-{{ \App\Enums\EtatEnum::getColor($candidature->etat) }}">
+                        <span class="badge badge-{{ \App\Enums\EtatEnumCandidature::getColor($candidature->etat) }}">
                             {{ $candidature->etat }}
                          </span>
                         </td>
@@ -68,10 +69,14 @@
                             <div class="form-group">
 
                                 <select name="etat" id="etat" class="form-control">
-                                    <option value="publiée" {{ $candidature->etat === 'publiée' ? 'selected' : '' }}>Publiée</option>
-                                    <option value="en attente" {{ $candidature->etat === 'en attente' ? 'selected' : '' }}>En attente</option>
-                                    <option value="fermée" {{ $candidature->etat === 'fermée' ? 'selected' : '' }}>Fermée</option>
-                                </select>
+                    <option value="en attente" {{ $candidature->etat === 'en attente' ? 'selected' : '' }}>En attente</option>
+                     <option value="reçu" {{ $candidature->etat === 'reçu' ? 'selected' : '' }}>Reçu</option>
+                      <option value="en attente entretien" {{ $candidature->etat === 'en attente entretien' ? 'selected' : '' }}>En attente d'entretien</option>
+                       <option value="refusé" {{ $candidature->etat === 'refusé' ? 'selected' : '' }}>Refusé</option>
+                       <option value="accepté" {{ $candidature->etat === 'accepté' ? 'selected' : '' }}>Accepté</option>
+
+
+                       </select>
                             </div>
                             <button type="submit" class="btn btn-primary btn-sm">Modifier</button>
                         </form></td>

@@ -70,6 +70,11 @@ Route::controller(AuthController::class)->middleware(['guest'])->group(function 
 Route::get('/login/form', 'formlogin')->name('formlogin');
 Route::post('/login', 'login')->name('login');
 
+Route::get('/auth/google', 'redirect')->name('google-auth');
+Route::get('/auth/google/call-back', 'callbackgoogle')->name('callbackgoogle');
+
+
+
 Route::get('/register/form', 'formregister')->name('formregister');
 Route::post('/register', 'register')->name('register');
 

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade'); // Référence à l'utilisateur
             $table->foreignId('annance_id')->nullable()->constrained('annances')->onDelete('cascade');
             $table->text('lettre_motivation')->nullable(); // Chemin de la lettre de motivation
-            $table->enum('etat', ['publiée', 'en attente', 'fermée'])->default('en attente');
+            $table->enum('etat', ['en attente', 'reçu', 'en attente entretien', 'refusé', 'accepté'])
+      ->default('en attente');
             $table->timestamps();
         });
     }
