@@ -33,7 +33,7 @@
            <tr>
                <td >{{$candidature->annance->titre}}</td>
                <td >{{$candidature->annance->entreprise->name}}</td>
-                <td>{{$candidature->type_emploi}}</td>
+                <td>{{$candidature->annance->type_emploi}}</td>
                <td>{{$candidature->created_at}}</td>
 
 
@@ -65,7 +65,7 @@
            <tr>
                <td >{{$candidature->annance->titre}}</td>
                <td >{{$candidature->annance->entreprise->name}}</td>
-                <td>{{$candidature->type_emploi}}</td>
+                <td>{{$candidature->annance->type_emploi}}</td>
                <td>{{$candidature->created_at}}</td>
 
 
@@ -101,7 +101,7 @@
            <tr>
                <td >{{$candidature->annance->titre}}</td>
                <td >{{$candidature->annance->entreprise->name}}</td>
-                <td>{{$candidature->type_emploi}}</td>
+                <td>{{$candidature->annance->type_emploi}}</td>
                <td>{{$candidature->created_at}}</td>
 
 
@@ -136,7 +136,7 @@
            <tr>
                <td >{{$candidature->annance->titre}}</td>
                <td >{{$candidature->annance->entreprise->name}}</td>
-                <td>{{$candidature->type_emploi}}</td>
+                <td>{{$candidature->annance->type_emploi}}</td>
                <td>{{$candidature->created_at}}</td>
 
 
@@ -168,7 +168,7 @@
         <tr>
             <td >{{$candidature->annance->titre}}</td>
             <td >{{$candidature->annance->entreprise->name}}</td>
-             <td>{{$candidature->type_emploi}}</td>
+             <td>{{$candidature->annance->type_emploi}}</td>
             <td>{{$candidature->created_at}}</td>
 
 
