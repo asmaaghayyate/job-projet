@@ -78,15 +78,21 @@
 
                         <div class="job-overview">
 
-                <a href="{{route('postuleremplois',$annance->id)}}" class="btn btn-primary btn-lg">Postuler maintenant</a>
-
-                            <div id="small-dialog" class="zoom-anim-dialog mfp-hide apply-popup">
-                                <div class="small-dialog-headline">
-                                    <h2>Apply For This Job</h2>
-                                </div>
+                {{-- <a href="{{route('postuleremplois',$annance->id)}}"
+                    class="btn btn-primary btn-lg">Postuler maintenant</a> --}}
 
 
-                            </div>
+                    @if(Auth::user()->id === $annance->user_id)
+                    <p class="alert alert-info">Vous êtes l'annonceur de cette annonce.</p>
+                    <a href="#" class="btn btn-secondary btn-lg" disabled>
+                        Déjà Créé
+                    </a>
+                @else
+                    <a href="{{ route('postuleremplois', $annance->id) }}" class="btn btn-primary btn-lg">
+                        Postuler maintenant
+                    </a>
+                @endif
+
 
                     </div>
 

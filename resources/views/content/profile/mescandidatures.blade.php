@@ -31,7 +31,10 @@
         @foreach ($mescandidaturesrecu as $candidature)
 
            <tr>
-               <td >{{$candidature->annance->titre}}</td>
+               <td >
+                {{$candidature->annance->titre}}
+
+            </td>
                <td >{{$candidature->annance->entreprise->name}}</td>
                 <td>{{$candidature->annance->type_emploi}}</td>
                <td>{{$candidature->created_at}}</td>
@@ -134,7 +137,12 @@
         @foreach ($mescandidaturesenattente as $candidature)
 
            <tr>
-               <td >{{$candidature->annance->titre}}</td>
+               <td >
+   <a href="{{route('showemplois',$candidature->annance->slug)}}"
+    target="_blank"  style="color: blue; text-decoration: underline;"><i class="fas fa-external-link-alt"></i>
+    {{ $candidature->annance->titre }}</a>
+
+               </td>
                <td >{{$candidature->annance->entreprise->name}}</td>
                 <td>{{$candidature->annance->type_emploi}}</td>
                <td>{{$candidature->created_at}}</td>

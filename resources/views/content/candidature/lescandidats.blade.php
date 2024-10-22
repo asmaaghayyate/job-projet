@@ -46,7 +46,10 @@
 
             @foreach ( $candidatures as $candidature )
             <tr>
- <td><a href="{{route('showemplois',$candidature->annance->slug)}}">{{ $candidature->annance->titre }}</a></td>
+ <td> <a href="{{route('showemplois',$candidature->annance->slug)}}"
+    target="_blank"  style="color: blue; text-decoration: underline;"><i class="fas fa-external-link-alt"></i>
+    {{ $candidature->annance->titre }}</a>
+    </td>
                       <td>{{ $candidature->user->name }}</td>
                         <td>{{$candidature->user->email}}</td>
                         <td>{{$candidature->user->phone}}</td>
