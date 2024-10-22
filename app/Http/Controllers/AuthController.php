@@ -22,11 +22,13 @@ public function formlogin(){
 
 public function redirect(){
 
-    
+
     return Socialite::driver('google')->redirect();
 }
 
 public function callbackgoogle() {
+
+    
     $user = Socialite::driver('google')->user();
     $finduser = User::where('social_id', $user->id)->first();
 

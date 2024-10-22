@@ -92,15 +92,36 @@ public function mescandidatures(){
 
     $user = Auth::user()->id;
 
-    $mescandidaturespubliee=Candidature::where('etat','publiée')
-    ->where('user_id', $user)
-    ->get();
     $mescandidaturesenattente=Candidature::where('etat','en attente')
     ->where('user_id', $user)
     ->get();
 
+
+
+    $mescandidaturesentretien=Candidature::where('etat','en attente entretien')
+    ->where('user_id', $user)
+    ->get();
+
+    $mescandidaturesaccepte=Candidature::where('etat','accepté')
+    ->where('user_id', $user)
+    ->get();
+
+    $mescandidaturesrefuse=Candidature::where('etat','refusé')
+    ->where('user_id', $user)
+    ->get();
+
+    $mescandidaturesrecu=Candidature::where('etat','reçu')
+    ->where('user_id', $user)
+    ->get();
+
     return view('content.profile.mescandidatures',
-    compact('mescandidaturespubliee','mescandidaturesenattente'));
+    compact(
+        'mescandidaturesentretien',
+       'mescandidaturesenattente',
+                    'mescandidaturesaccepte',
+                   'mescandidaturesrefuse',
+                   'mescandidaturesrecu',
+));
 }
 
 

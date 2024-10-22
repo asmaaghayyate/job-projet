@@ -10,83 +10,173 @@
 ================================================== -->
 
 <!-- Container -->
+
+
+@if ($mescandidaturesrecu->count()!=0)
+   <div  style="padding-left: 10px;padding-bottom: 10px; padding-top: 10px; background-color:#EFEFEF" >
+       <h3><strong>Mes Candidatures Recues </strong></h3>
+     </div>
+      <div class="sixteen columns;margin-left:0%">
+       <table class="manage-table resumes responsive-table" >
+           <tr>
+               <th><i class="fa fa-file-text"></i> Titre</th>
+               <th><i class="fa fa-file-text"></i> Entreprise</th>
+               <th><i class="fa fa-map-marker-alt"></i> Type Emploi</th>
+               <th><i class="fa fa-calendar"></i> Date</th>
+
+
+           </tr>
+
+           <!-- Item #1 -->
+        @foreach ($mescandidaturesrecu as $candidature)
+
+           <tr>
+               <td >{{$candidature->annance->titre}}</td>
+               <td >{{$candidature->annance->entreprise->name}}</td>
+                <td>{{$candidature->type_emploi}}</td>
+               <td>{{$candidature->created_at}}</td>
+
+
+           </tr>
+   @endforeach
+   </table>
+</div>
+   @endif
+
+
+   @if ($mescandidaturesrefuse->count()!=0)
+   <div  style="padding-left: 10px;padding-bottom: 10px; padding-top: 10px; background-color:#EFEFEF" >
+       <h3><strong>Mes Candidatures Refusees </strong></h3>
+     </div>
+      <div class="sixteen columns;margin-left:0%">
+       <table class="manage-table resumes responsive-table" >
+           <tr>
+               <th><i class="fa fa-file-text"></i> Titre</th>
+               <th><i class="fa fa-file-text"></i> Entreprise</th>
+               <th><i class="fa fa-map-marker-alt"></i> Type Emploi</th>
+               <th><i class="fa fa-calendar"></i> Date</th>
+
+
+           </tr>
+
+           <!-- Item #1 -->
+        @foreach ($mescandidaturesrefuse as $candidature)
+
+           <tr>
+               <td >{{$candidature->annance->titre}}</td>
+               <td >{{$candidature->annance->entreprise->name}}</td>
+                <td>{{$candidature->type_emploi}}</td>
+               <td>{{$candidature->created_at}}</td>
+
+
+           </tr>
+   @endforeach
+   </table>
+</div>
+   @endif
+
+
+
+
+
+
+   @if ($mescandidaturesaccepte->count()!=0)
+   <div  style="padding-left: 10px;padding-bottom: 10px; padding-top: 10px; background-color:#EFEFEF" >
+       <h3><strong>Mes Candidatures Accpete </strong></h3>
+     </div>
+      <div class="sixteen columns;margin-left:0%">
+       <table class="manage-table resumes responsive-table" >
+           <tr>
+               <th><i class="fa fa-file-text"></i> Titre</th>
+               <th><i class="fa fa-file-text"></i> Entreprise</th>
+               <th><i class="fa fa-map-marker-alt"></i> Type Emploi</th>
+               <th><i class="fa fa-calendar"></i> Date</th>
+
+
+           </tr>
+
+           <!-- Item #1 -->
+        @foreach ($mescandidaturesaccepte as $candidature)
+
+           <tr>
+               <td >{{$candidature->annance->titre}}</td>
+               <td >{{$candidature->annance->entreprise->name}}</td>
+                <td>{{$candidature->type_emploi}}</td>
+               <td>{{$candidature->created_at}}</td>
+
+
+           </tr>
+   @endforeach
+   </table>
+</div>
+   @endif
+
+
+
+
+
+   @if ($mescandidaturesenattente->count()!=0)
+   <div  style="padding-left: 10px;padding-bottom: 10px; padding-top: 10px; background-color:#EFEFEF" >
+       <h3><strong>Mes Candidatures En attente </strong></h3>
+     </div>
+      <div class="sixteen columns;margin-left:0%">
+       <table class="manage-table resumes responsive-table" >
+           <tr>
+               <th><i class="fa fa-file-text"></i> Titre</th>
+               <th><i class="fa fa-file-text"></i> Entreprise</th>
+               <th><i class="fa fa-map-marker-alt"></i> Type Emploi</th>
+               <th><i class="fa fa-calendar"></i> Date</th>
+
+
+           </tr>
+
+           <!-- Item #1 -->
+        @foreach ($mescandidaturesenattente as $candidature)
+
+           <tr>
+               <td >{{$candidature->annance->titre}}</td>
+               <td >{{$candidature->annance->entreprise->name}}</td>
+                <td>{{$candidature->type_emploi}}</td>
+               <td>{{$candidature->created_at}}</td>
+
+
+           </tr>
+   @endforeach
+   </table>
+</div>
+   @endif
+
+
+   @if ($mescandidaturesentretien->count()!=0)
 <div  style="padding-left: 10px;padding-bottom: 10px; padding-top: 10px; background-color:#EFEFEF" >
-	<h3><strong>Mes Candidatures publiee</strong></h3>
+    <h3><strong>Mes Candidatures En attente d'entretien</strong></h3>
   </div>
-
-
-  @if ($mescandidaturespubliee->count()==0)
-  <p>
-  Vous n'avez  aucune candidatures publiee.
-  </p>
-@else
-<div class="sixteen columns;margin-left:0%">
-	<table class="manage-table resumes responsive-table" >
-		<tr>
-			<th><i class="fa fa-file-text"></i> Titre</th>
+   <div class="sixteen columns;margin-left:0%">
+    <table class="manage-table resumes responsive-table" >
+        <tr>
+            <th><i class="fa fa-file-text"></i> Titre</th>
             <th><i class="fa fa-file-text"></i> Entreprise</th>
-			<th><i class="fa fa-map-marker-alt"></i> Type Emploi</th>
-			<th><i class="fa fa-calendar"></i> Date</th>
+            <th><i class="fa fa-map-marker-alt"></i> Type Emploi</th>
+            <th><i class="fa fa-calendar"></i> Date</th>
 
 
-		</tr>
+        </tr>
 
-		<!-- Item #1 -->
-     @foreach ($mescandidaturespubliee as $candidature)
+        <!-- Item #1 -->
+     @foreach ($mescandidaturesentretien as $candidature)
 
-		<tr>
-			<td >{{$candidature->annance->titre}}</td>
+        <tr>
+            <td >{{$candidature->annance->titre}}</td>
             <td >{{$candidature->annance->entreprise->name}}</td>
-		     <td>{{$candidature->type_emploi}}</td>
+             <td>{{$candidature->type_emploi}}</td>
             <td>{{$candidature->created_at}}</td>
 
 
-		</tr>
+        </tr>
 @endforeach
 </table>
-</div>
-  @endif
-
-
-
-
-
-<div  style="padding-left: 10px;padding-bottom: 10px; padding-top: 10px; background-color:#EFEFEF" >
-	<h3><strong>Mes Candidatures En attente</strong></h3>
-  </div>
-
-  @if ($mescandidaturesenattente->count()==0)
-  Vous n'avez  aucune annonces en attente.
-@else
-<div class="sixteen columns;margin-left:0%">
-	<table class="manage-table resumes responsive-table" >
-		<tr>
-			<th><i class="fa fa-file-text"></i> Titre</th>
-            <th><i class="fa fa-file-text"></i> Entreprise</th>
-			<th><i class="fa fa-map-marker-alt"></i> Type Emploi</th>
-			<th><i class="fa fa-calendar"></i> Date</th>
-
-
-		</tr>
-
-		<!-- Item #1 -->
-     @foreach ($mescandidaturesenattente as $candidature)
-
-		<tr>
-			<td >{{$candidature->annance->titre}}</td>
-            <td >{{$candidature->annance->entreprise->name}}</td>
-		     <td>{{$candidature->annance->type_emploi}}</td>
-            <td>{{$candidature->created_at}}</td>
-
-
-		</tr>
-@endforeach
-</table>
-
-</div>
+   </div>
 @endif
-
-
 
 
 
