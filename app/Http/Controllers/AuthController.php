@@ -21,6 +21,8 @@ public function formlogin(){
 
 
 public function redirect(){
+
+    
     return Socialite::driver('google')->redirect();
 }
 

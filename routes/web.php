@@ -105,8 +105,8 @@ Route::get('/profile/postuler/{annance}', [ProfileController::class,'postuleremp
 
 
 
-Route::controller(ProfileemployeurController::class)->middleware(['auth'])->group(function () {
-Route::get('/profile','monprofileemployeur') ->name('monprofile');
+Route::controller(ProfileController::class)->middleware(['auth'])->group(function () {
+Route::get('/profile','monprofile') ->name('monprofile');
 Route::get('/profile/ajouter-entreprise', 'ameliorerprofileemployeur')
 ->name('ajouterentreprise');
 
@@ -115,9 +115,9 @@ Route::get('/profile/ameliorer-profile', 'ameliorerprofile')
 
 Route::get('profile/mesentreprises','mesentreprises') ->name('mesentreprises');
 Route::get('profile/mesannances','mesannances') ->name('mesannances');
-
-
 });
+
+
 
 
 
