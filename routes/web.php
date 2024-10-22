@@ -100,8 +100,6 @@ Route::get('/annance/{slug}','showemplois')->name('showemplois');
 
 
 
-Route::get('/profile/postuler/{annance}', [ProfileController::class,'postuleremplois'])
-->name('postuleremplois')->middleware('auth','Verifypostule');
 
 
 
@@ -136,18 +134,18 @@ Route::post('/profile/update','update') ->name('update.profile');
 
 
 
-
-
 Route::controller(CandidatureController::class)->middleware(['auth'])->group(function () {
 
-Route::post('/candidature/store/{annance}','store')->name('store.candidature');
+ Route::get('/profile/postuler/{annance}', 'postuleremplois')
+ ->name('postuleremplois')->middleware('Verifypostule');
+
+ Route::post('/candidature/store/{annance}','store')
+    ->name('store.candidature');
 
 Route::get('/candidature/message','messagecandidature')->name('messagecandidature');
 
-
 Route::get('/candidatures/index','index')->name('lescandidatures');
 Route::get('/mescandidatures/index','mescandidatures')->name('mescandidatures');
-
 
 Route::post('/candidatures/update/{candidature}','updatetatcandidature')
 ->name('updatetatcandidature');

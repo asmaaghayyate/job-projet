@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Annance;
+use App\Models\Candidature;
 use App\Models\Entreprise;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,14 +13,6 @@ class ProfileController extends Controller
 
 
 
-
-
-public function postuleremplois(Annance $annance){
-
-
-return view('content.emplois.postuleremplois',compact('annance'));
-
-}
 
 
 
@@ -63,7 +56,6 @@ public function mesannances(){
     ->get();
     return view('content.profile.mesannances',compact('mesannancespubliee','mesannancesenattente'));
 }
-
 
 
 

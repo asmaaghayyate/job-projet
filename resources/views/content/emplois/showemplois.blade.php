@@ -78,25 +78,23 @@
 
                         <div class="job-overview">
 
-                {{-- <a href="{{route('postuleremplois',$annance->id)}}"
-                    class="btn btn-primary btn-lg">Postuler maintenant</a> --}}
 
-
-                    @if(Auth::user()->id === $annance->user_id)
-                    <p class="alert alert-info">Vous êtes l'annonceur de cette annonce.</p>
-                    <a href="#" class="btn btn-secondary btn-lg" disabled>
-                        Déjà Créé
-                    </a>
-                @else
-                    <a href="{{ route('postuleremplois', $annance->id) }}" class="btn btn-primary btn-lg">
-                        Postuler maintenant
-                    </a>
-                @endif
+                            @if(auth()->check() && auth()->user()->id === $annance->user_id)
+                            <p class="alert alert-info">Vous êtes l'annonceur de cette annonce.</p>
+                            <a href="#" class="btn btn-secondary btn-lg" disabled>
+                                Déjà Créé
+                            </a>
+                        @else
+                            <a href="{{ route('postuleremplois', $annance->id) }}" class="btn btn-primary btn-lg">
+                                Postuler maintenant
+                            </a>
+                        @endif
 
 
                     </div>
 
                 </div>
+
 
 
 

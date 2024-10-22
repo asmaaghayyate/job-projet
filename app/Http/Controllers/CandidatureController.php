@@ -12,45 +12,7 @@ class CandidatureController extends Controller
     //
 
 
-public function store(Request $request,Annance $annance){
 
-//dd($annance->id);
-$user =Auth::user();
-
-
-$values=$request->validate([
-
-'phone'=>'required',
-'sexe'=>'required',
-'niveau_etude'=>'required',
-'annees_experiences'=>'required',
-
-]);
-
-if (!$user->cv) {
-    $values['cv'] = 'required|mimes:pdf';
-} else {
-    $values['cv'] = 'nullable|mimes:pdf'; // Si un CV existe, le champ peut être vide
-}
-
-if ($request->hasFile('cv')) {
-$values['cv']=$request->file('cv')->store('cvs','public');
-}
-
-$user->update($values);
-
-
-$values2['lettre_motivation']=$request->lettre_motivation;
-$values2['user_id']=Auth::user()->id;
-$values2['annance_id']="$annance->id";
-//dd($values2);
-Candidature::create($values2);
-
-return redirect()->route('messagecandidature')
-->with('success','Votre candidature a ete bien envoye,Votre demande est en cours de traitement');
-
-
-}
 
 
 public function messagecandidature(){
@@ -124,6 +86,54 @@ public function mescandidatures(){
 ));
 }
 
+
+
+public function store(Request $request,Annance $annance){
+
+    //dd($annance->id);
+    $user =Auth::user();
+
+
+    $values=$request->validate([
+
+    'phone'=>'required',
+    'sexe'=>'required',
+    'niveau_etude'=>'required',
+    'annees_experiences'=>'required',
+
+    ]);
+
+    if (!$user->cv) {
+        $values['cv'] = 'required|mimes:pdf';
+    } else {
+        $values['cv'] = 'nullable|mimes:pdf'; // Si un CV existe, le champ peut être vide
+    }
+
+    if ($request->hasFile('cv')) {
+    $values['cv']=$request->file('cv')->store('cvs','public');
+    }
+
+    $user->update($values);
+
+
+    $values2['lettre_motivation']=$request->lettre_motivation;
+    $values2['user_id']=Auth::user()->id;
+    $values2['annance_id']="$annance->id";
+    //dd($values2);
+    Candidature::create($values2);
+
+    return redirect()->route('messagecandidature')
+    ->with('success','Votre candidature a ete bien envoye,Votre demande est en cours de traitement');
+
+
+    }
+
+    public function postuleremplois(Annance $annance){
+
+
+        return view('content.emplois.postuleremplois',compact('annance'));
+
+        }
 
 
 }
