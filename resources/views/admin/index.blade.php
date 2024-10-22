@@ -108,256 +108,24 @@
         </div>
     </div>
 
-    <!-- row opened -->
-    <div class="row row-sm row-deck">
-        <div class="col-md-12 col-lg-6 col-xl-6">
-            <div class="card card-table-two">
-                <div class="d-flex justify-content-between">
-                    <h4 class="card-title mb-1">Stagiares List</h4>
-                    <i class="mdi mdi-dots-horizontal text-gray"></i>
-                </div>
-                {{-- <span class="tx-12 tx-muted mb-3 ">This is your most recent earnings for today's date.</span> --}}
-                <div class="table-responsive country-table">
-                    <table class="table table-striped table-bordered mb-0 text-sm-nowrap text-lg-nowrap text-xl-nowrap">
-                        <thead>
-                            <tr>
-                                <th class="wd-lg-25p">Name</th>
-                                <th class="wd-lg-25p tx-right">Phone</th>
-                                <th class="wd-lg-25p tx-right">H Date</th>
-                                <th class="wd-lg-25p tx-right">Type</th>
-                            </tr>
-                        </thead>
-                        {{-- <tbody>
-                            @forelse ($listOfData['stagiareList'] as $item)
-                                <tr>
-                                    <td>{{ $item->full_name }}</td>
-                                    <td class="tx-right tx-medium tx-inverse">{{ $item->phone }}</td>
-                                    <td class="tx-right tx-medium tx-inverse">{{ $item->date_debut }}</td>
-                                    <td class="tx-right tx-medium tx-inverse">
-                                        {{ $item->ContratType->name ? $item->ContratType->name : '' }}</td>
-                                </tr>
-                            @empty
-                                <p>no data found</p>
-                            @endforelse
-                        </tbody> --}}
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 col-lg-6 col-xl-6">
-            <div class="card card-table-two">
-                <div class="d-flex justify-content-between">
-                    <h4 class="card-title mb-1">Employee List</h4>
-                    <i class="mdi mdi-dots-horizontal text-gray"></i>
-                </div>
-                {{-- <span class="tx-12 tx-muted mb-3 ">This is your most recent earnings for today's date.</span> --}}
-                <div class="table-responsive country-table">
-                    <table class="table table-striped table-bordered mb-0 text-sm-nowrap text-lg-nowrap text-xl-nowrap">
-                        <thead>
-                            <tr>
-                                <th class="wd-lg-25p">Name</th>
-                                <th class="wd-lg-25p tx-right">Phone</th>
-                                <th class="wd-lg-25p tx-right">H Date</th>
-                                <th class="wd-lg-25p tx-right"></th>
-                            </tr>
-                        </thead>
-                        {{-- <tbody>
-                            @forelse ($listOfData['employeesList'] as $item)
-                                <tr>
-                                    <td>{{ $item->full_name }}</td>
-                                    <td class="tx-right tx-medium tx-inverse">{{ $item->phone }}</td>
-                                    <td class="tx-right tx-medium tx-inverse">{{ $item->date_debut }}</td>
-                                    <td class="tx-right tx-medium tx-inverse">
-                                        {{ $item->ContratType->name ? $item->ContratType->name : '' }}</td>
-                                </tr>
-                            @empty
-                                <p>no data found</p>
-                            @endforelse
-                        </tbody> --}}
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /row -->
+
+
+
+
+
+
+
+
+
+
+ 
 
 
     <!-- row opened -->
-    <div class="row row-sm">
-        <div class="col-xl-4 col-md-12 col-lg-12">
-            <div class="card">
-                <div class="card-header pb-1">
-                    <h3 class="card-title mb-2">Recent 5 Employees</h3>
-                </div>
-                <div class="card-body p-0 customers mt-1">
-                    {{-- <div class="list-group list-lg-group list-group-flush">
-                        @forelse ($listOfData['recentEmployees'] as $item)
-                            <div class="list-group-item list-group-item-action" href="#">
-                                <div class="media mt-0">
-                                    <img class="avatar-lg rounded-circle mr-3 my-auto"
-                                        @if ($item->sexe != 'homme') src="https://cricclubs.com/documentsRep/profilePics/default-female-Image.jpg"
-                                    @else
-                                    src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQN6DYPQY4MejnXbsptT3GFyfhoWkIeHgV1iEJeYMa8lhj_opZE" @endif
-                                        alt="Image description">
-                                    <div class="media-body">
-                                        <div class="d-flex align-items-center">
-                                            <div class="mt-0">
-                                                <h5 class="mb-1 tx-15">{{ $item->full_name }}</h5>
-                                                <p class="mb-0 tx-13 text-success">{{ optional($item->ContratType)->name }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @empty
-                        @endforelse
-                    </div> --}}
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-12 col-lg-12">
-            <div class="card">
-                <div class="card-header pb-1">
-                    <h3 class="card-title mb-2">Recent 5 Tasks</h3>
-                </div>
-                <div class="card-body p-0 customers mt-1">
-                    {{-- <div class="list-group list-lg-group list-group-flush">
-                        @forelse ($listOfData['recentTasks'] as $item)
-                            <div class="list-group-item list-group-item-action" href="#">
-                                <div class="media mt-0">
-                                    <div class="media-body">
-                                        <div class="d-flex align-items-center">
-                                            <div class="mt-0">
-                                                <h5 class="mb-1 tx-15">{{ $item->name }}</h5>
-                                                <div>
 
-                                                    <p class="mb-0 tx-13 "><span class="text-success">By
-                                                            {{ $item->employee->full_name }} |
-                                                        </span>{{ $item->date_debut }} -> {{ $item->date_fin }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @empty
-                        @endforelse
-                    </div> --}}
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-12 col-lg-12">
-            <div class="card">
-                <div class="card-header pb-1">
-                    <h3 class="card-title mb-2">Recent 5 Bloc Note</h3>
-                </div>
-                <div class="card-body p-0 customers mt-1">
-                    {{-- <div class="list-group list-lg-group list-group-flush">
-                        @forelse ($listOfData['recentNotes'] as $item)
-                            <div class="list-group-item list-group-item-action" href="#">
-                                <div class="media mt-0">
-                                    <div class="media-body">
-                                        <div class="d-flex align-items-center">
-                                            <div class="mt-0">
-                                                <h5 class="mb-1 tx-15">{{ $item->date }}</h5>
-                                                <p class="mb-0 tx-13 text-success">
-                                                    {{ Str::limit($item->description, 25, '...') }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @empty
-                        @endforelse
-                    </div> --}}
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 col-lg-8 col-xl-8">
-            <div class="card card-table-two">
-                <div class="d-flex justify-content-between">
-                    <h4 class="card-title mb-1">Employees Status Of This Month</h4>
-                    <i class="mdi mdi-dots-horizontal text-gray"></i>
-                </div>
-                {{-- <span class="tx-12 tx-muted mb-3 ">This is your most recent earnings for today's date.</span> --}}
-                <div class="table-responsive country-table">
-                    <table class="table table-striped table-bordered mb-0 text-sm-nowrap text-lg-nowrap text-xl-nowrap">
-                        <thead>
-                            <tr>
-                                <th class="wd-lg-25p">Name</th>
-                                <th class="wd-lg-25p tx-right">Phone</th>
-                                <th class="wd-lg-25p tx-right">departement</th>
-                                <th class="wd-lg-25p tx-right">Late Count</th>
-                                <th class="wd-lg-25p tx-right">Absenc Count</th>
-                                <th class="wd-lg-25p tx-right"></th>
-                            </tr>
-                        </thead>
-                        {{-- <tbody>
-                            @forelse ($listOfData['employeesCountLateAbsence'] as $item)
-                                <tr>
-                                    <td>{{ $item['employee']->firstname }}</td>
-                                    <td class="tx-right tx-medium tx-inverse">{{ $item['employee']->phone }}</td>
-                                    <td class="tx-right tx-medium tx-inverse">{{ $item['employee']->departement->name }}
-                                    </td>
-                                    <td class="tx-right tx-medium tx-inverse">{{ $item['late_count'] }}</td>
-                                    <td class="tx-right tx-medium tx-inverse">{{ $item['absence_count'] }}</td>
-                                    <td class="">
-                                        <a href="{{ route('admin.employees.show', $item['employee']->id) }}"
-                                            class="btn btn-success btn-sm">
-                                            <i class="fa-solid fa-eye"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @empty
-                                <p>no data found</p>
-                            @endforelse
-                        </tbody> --}}
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 col-lg-4 col-xl-4">
-            <div class="main-calendar" id="calendar"></div>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <!-- row close -->
-
-    <!-- row -->
-    <div class="row row-sm">
-        <div class="col-md-6">
-            <div class="card mg-b-20">
-                <div class="card-body">
-                    <div class="main-content-label mg-b-5">
-                        Line Chart
-                    </div>
-                    <p class="mg-b-20">Basic Charts Of Valex template.</p>
-                    <div class="morris-wrapper-demo" id="chartOne"></div>
-                </div>
-            </div>
-        </div><!-- col-6 -->
-        <div class="col-md-6">
-            <div class="card mg-b-20">
-                <div class="card-body">
-                    <div class="main-content-label mg-b-5">
-                        Stacked Bar Chart
-                    </div>
-                    <p class="mg-b-20">Basic Charts Of Valex template.</p>
-                    <div class="morris-wrapper-demo" id="chartTwo"></div>
-                </div>
-            </div>
-        </div><!-- col-6 -->
-    </div>
-    <!-- /row -->
 
 @endsection
+
 
 @section('scripts')
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -434,6 +202,14 @@
         });
     </script>
 @endsection
+
+
+
+
+
+
+
+
 
 @section('styles')
     <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />

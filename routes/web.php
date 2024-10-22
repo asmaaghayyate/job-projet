@@ -35,8 +35,12 @@ $utilisateurcount=User::all()->count();
 $annancespublieecount=Annance::where('etat','publiée')->count();
 $annancesenattentecount=Annance::where('etat','en attente')->count();
 $annancesfermeecount=Annance::where('etat','fermée')->count();
-    return view('admin.index',compact('utilisateurcount','annancespublieecount','annancesenattentecount','annancesfermeecount'));
+
+    return view('admin.index',compact('utilisateurcount',
+    'annancespublieecount','annancesenattentecount','annancesfermeecount'));
 })->name("admin.dashboard")->middleware(['auth.admin']);
+
+
 
 
 
@@ -59,7 +63,7 @@ Route::post('/admin/updatetat/{annance}',[AnnancesController::class,'updatetat']
 
 
 Route::get('/', function () {
-    $toutlesemploiscount=Annance::all()->count();
+    $toutlesemploiscount=Annance::where('etat','publiée')->count();
     $dernieresannances = Annance::where('etat','publiée')->latest()->take(5)->get();
  return view('index',compact('toutlesemploiscount','dernieresannances'));
     })->name('index');

@@ -36,7 +36,7 @@
                         <path d="M5 5h4v6H5zm10 8h4v6h-4zM5 17h4v2H5zM15 5h4v2h-4z" opacity=".3" />
                         <path
                             d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
-                    </svg><span class="side-menu__label" style="font-weight: bold;color: black">Acceuil</span></a>
+                    </svg><span class="side-menu__label" style="font-weight: bold;color: black">Dashboard</span></a>
             </li>
 
             <li class="side-item side-item-category">General</li>
@@ -47,19 +47,18 @@
                         style="margin-left: 14px;font-weight: bold;color: black">Accounts</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="">Employeurs</a></li>
-                    <li><a class="slide-item" href="">Candidats</a>
+                    <li><a class="slide-item" href="">Utilisateurs</a></li>
                     </li>
                     <li><a class="slide-item" href="{{route('lesannances')}}">Annances</a>
                     </li>
                 </ul>
             </li>
-            <li class="slide">
+            {{-- <li class="slide">
                 <a class="side-menu__item" href=""><i class="fa-solid fa-gears"
                         style="color: #000000;"></i><span style="margin-left: 14px;font-weight: bold;color: black"
                         class="side-menu__label">Dashboard</span></a>
 
-            </li>
+            </li> --}}
 
 
 

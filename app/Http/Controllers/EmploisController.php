@@ -17,16 +17,19 @@ public function emplois(Request $request){
     $query = Annance::query();
 
     if (!empty($request->categorie && empty($request->ville))) {
-        $query->where('categorie', 'like', trim($request->categorie) . "%");
+        $query->where('categorie', 'like', trim($request->categorie) . "%")
+        ->where('etat', "publiée");
     }
 
     if (!empty($request->ville && empty($request->categorie))) {
-        $query->orWhere('ville', 'like', trim($request->ville) . "%");
+        $query->orWhere('ville', 'like', trim($request->ville) . "%")
+        ->where('etat', "publiée");
     }
 
     if (!empty($request->categorie) && !empty($request->ville)) {
         $query->where('categorie', 'like', trim($request->categorie) . "%")
-        ->where('ville', 'like', trim($request->ville) . "%");
+        ->where('ville', 'like', trim($request->ville) . "%")
+        ->where('etat', "publiée");
     }
 
    //dd($query->get());

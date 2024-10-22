@@ -11,7 +11,7 @@ class AnnancesController extends Controller
 
     public function lesannances(){
 
-        $lesannances=Annance::latest()->get();
+        $lesannances=Annance::latest()->paginate(15);
         return view('admin.content.annance.index',compact('lesannances'));
     }
 
