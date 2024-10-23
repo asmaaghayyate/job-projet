@@ -9,11 +9,32 @@ use Illuminate\Http\Request;
 class AnnancesController extends Controller
 {
 
-    public function lesannances(){
+    public function index(){
 
-        $lesannances=Annance::latest()->paginate(15);
+        $lesannances=Annance::latest()->paginate(10);
         return view('admin.content.annance.index',compact('lesannances'));
     }
+
+
+    public function indexenattente(){
+
+        $lesannances=Annance::where('etat','en attente')->latest()->paginate(10);
+        return view('admin.content.annance.indexannonceenattente',compact('lesannances'));
+    }
+
+    public function indexpubliee(){
+
+        $lesannances=Annance::where('etat','publiée')->latest()->paginate(10);
+        return view('admin.content.annance.indexannoncepubliee',compact('lesannances'));
+    }
+
+
+    public function indexfermee(){
+
+        $lesannances=Annance::where('etat','fermée')->latest()->paginate(10);
+        return view('admin.content.annance.indexannoncefermee',compact('lesannances'));
+    }
+
 
 
     public function updatetat(Request $request,Annance $annance){
@@ -25,10 +46,45 @@ class AnnancesController extends Controller
      $annance->etat = $request->etat;
      $annance->save();
 
-return redirect()->route('lesannances')->with('success', 'L\'état de l\'annonce a été mis à jour avec succès.');
+return redirect()->route('admin.lesannances')->with('success', 'L\'état de l\'annonce a été mis à jour avec succès.');
 
 
     }
+
+
+
+public function destroy(Annance $annance){
+
+    {
+        if ($annance) {
+            $annance->delete();
+            // $client->user()->delete();
+        }
+
+    if($annance->etat=="fermee"){
+    return redirect()->route('admin.lesannances.fermee')
+    ->with('success', 'l\'annonce a été supprimée avec succès.');
+
+   }elseif($annance->etat=="en attente"){
+    return redirect()->route('admin.lesannances.enattente')
+    ->with('success', 'l\'annonce a été supprimée avec succès.');
+
+    }else{
+    return redirect()->route('admin.lesannances.publiee')
+    ->with('success', 'l\'annonce a été supprimée avec succès.');
+
+    }
+
+
+
+
+
+
+    }
+
+}
+
+
 
 
 }

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AnnancesController;
 use App\Http\Controllers\Admin\AuthAdminController;
+use App\Http\Controllers\Admin\UtilisateurController;
 use App\Http\Controllers\AnnanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CandidatureController;
@@ -49,13 +51,36 @@ Route::post('logout/admin',  [AuthAdminController::class,"logout"])->name('logou
 
 
 
-Route::middleware(['auth.admin'])->group(function () {
-Route::get('/admin/annances',[AnnancesController::class,'lesannances'])->name('lesannances');
-Route::post('/admin/updatetat/{annance}',[AnnancesController::class,'updatetat'])->name('updatetat');
+Route::controller(AnnancesController::class)->middleware(['auth.admin'])->group(function () {
+Route::get('/admin/annances','index')->name('admin.lesannances');
+
+Route::get('/admin/annances/en-attente','indexenattente')->name('admin.lesannances.enattente');
+Route::get('/admin/annances/publiee','indexpubliee')->name('admin.lesannances.publiee');
+Route::get('/admin/annances/fermee','indexfermee')->name('admin.lesannances.fermee');
+
+
+Route::delete('/admin/annances/destroy/{annance}','destroy')->name('admin.annances.destroy');
+Route::post('/admin/updatetat/{annance}','updatetat')->name('updatetat');
 });
 
 
 
+Route::controller(UtilisateurController::class)->middleware(['auth.admin'])->group(function () {
+Route::get('/admin/utilisateurs','index')->name('admin.utilisateurs');
+Route::delete('/admin/utilisateur/destroy/{user}','destroy')->name('admin.utilisateur.destroy');
+Route::post('/admin/utilisateur/{user}/toggle-block',  'toggleBlock')->name('admin.utilisateur.toggle-blockd');
+
+});
+
+
+Route::resource('admin' , AdminController::class)->middleware(['auth.admin']);
+
+
+
+
+// Route::middleware(['auth.admin'])->group(function () {
+//     Route::get('/admin/annances',[AnnancesController::class,'lesannances'])->name('lesannances');
+//     });
 
 
 
@@ -107,7 +132,8 @@ Route::get('/annance/{slug}','showemplois')->name('showemplois');
 
 
 
-Route::controller(ProfileController::class)->middleware(['auth'])->group(function () {
+Route::controller(ProfileController::class)
+->middleware(['auth','CheckUserBlocked'])->group(function () {
 Route::get('/profile','monprofile') ->name('monprofile');
 Route::get('/profile/ajouter-entreprise', 'ameliorerprofileemployeur')
 ->name('ajouterentreprise');
@@ -124,11 +150,11 @@ Route::get('profile/mesannances','mesannances') ->name('mesannances');
 
 
 Route::get('/publierannance',[AnnanceController::class,'publierannance'])
-->name('publierannance')->middleware('auth');
+->name('publierannance')->middleware(['auth','CheckUserBlocked']);
 
 
 
-Route::controller(EmployeurController::class)->middleware(['auth'])->group(function () {
+Route::controller(EmployeurController::class)->middleware(['auth','CheckUserBlocked'])->group(function () {
 Route::post('/profile/store-entreprise','store')->name('store.entreprise');
 Route::post('/profile/store-annance','storeannance')->name('store.annance');
 Route::get('/profile/messageannance','messageannance')->name('messageannance');
@@ -138,7 +164,7 @@ Route::post('/profile/update','update') ->name('update.profile');
 
 
 
-Route::controller(CandidatureController::class)->middleware(['auth'])->group(function () {
+Route::controller(CandidatureController::class)->middleware(['auth','CheckUserBlocked'])->group(function () {
 
  Route::get('/profile/postuler/{annance}', 'postuleremplois')
  ->name('postuleremplois')->middleware('Verifypostule');

@@ -19,8 +19,8 @@ class Verifypostule
     {
 
    $userId = Auth::user()->id;
- $annonce = $request->route('annance'); // Assure-toi que l'ID de l'annonce est passé dans la route
- $annonceId=$annonce->id;
+  $annonce = $request->route('annance'); // Assure-toi que l'ID de l'annonce est passé dans la route
+  $annonceId=$annonce->id;
         // Vérifie le nombre de candidatures
   $count = Candidature::where('user_id', $userId)
   ->where('annance_id', $annonceId)->count();

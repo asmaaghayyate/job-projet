@@ -27,7 +27,8 @@ class User extends Authenticatable
         'annees_experiences',
         'phone',
         'social_id',
-        'social_type'
+        'social_type',
+        'is_blocked',
     ];
 
     /**

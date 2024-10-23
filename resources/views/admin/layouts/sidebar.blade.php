@@ -47,10 +47,30 @@
                         style="margin-left: 14px;font-weight: bold;color: black">Accounts</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="">Utilisateurs</a></li>
+                    <li><a class="slide-item" href="{{route('admin.utilisateurs')}}">Utilisateurs</a></li>
+
                     </li>
-                    <li><a class="slide-item" href="{{route('lesannances')}}">Annances</a>
+                    <li><a class="slide-item" href="{{route('admin.lesannances')}}">Annonces</a>
                     </li>
+
+                </li>
+                <li><a class="slide-item" href="{{route('admin.lesannances.enattente')}}">Annonces en attente</a>
+                </li>
+
+            </li>
+            <li><a class="slide-item" href="{{route('admin.lesannances.publiee')}}">Annonces publiées</a>
+            </li>
+
+
+        </li>
+        <li><a class="slide-item" href="{{route('admin.lesannances.fermee')}}">Annonces fermées</a>
+        </li>
+
+    </li>
+    <li><a class="slide-item" href="{{ route('admin.index') }}">Admins</a>
+    </li>
+
+
                 </ul>
             </li>
             {{-- <li class="slide">

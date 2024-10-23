@@ -26,15 +26,17 @@ $values=$request->validate([
 
     'name'=>'required',
      'adresse'=>'required',
-      'image'=>'required|image|mimes:png,jpg,svg',
+      'image'=>'image|mimes:png,jpg,svg',
       'description'=>'required',
 
 ]);
 
 $values['user_id']=Auth::user()->id;
 $values['slug']=\Str::slug($request->name);
-$values['image']=$request->file('image')->store('entreprise','public');
 
+if($request->file('image')){
+$values['image']=$request->file('image')->store('entreprise','public');
+}
   Entreprise::create($values);
 
 return redirect()->route('mesentreprises',Auth::user()->id)->with('success','Votre entreprise est bien ajoute');

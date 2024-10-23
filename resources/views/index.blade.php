@@ -99,7 +99,14 @@ Nous avons plus de   <strong>{{ $toutlesemploiscount }} </strong> offres d'emplo
 @foreach ($dernieresannances as $dernieresannance)
 <li class="">
     <a href="{{route('showemplois',$dernieresannance->slug)}}">
-				<img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">
+
+
+      @if ($dernieresannance->entreprise->image)
+     <img src="{{ asset('storage/' . $dernieresannance->entreprise->image) }}" alt="Imagfgdfge de l'entreprise">
+        @else
+        <img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">
+        @endif
+
 				<div class="job-list-content">
 
 					<h4><strong>{{$dernieresannance->titre}}</strong> </h4>

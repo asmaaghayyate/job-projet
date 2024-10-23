@@ -28,7 +28,7 @@ public function redirect(){
 
 public function callbackgoogle() {
 
-    
+
     $user = Socialite::driver('google')->user();
     $finduser = User::where('social_id', $user->id)->first();
 
@@ -60,6 +60,10 @@ public function login(Request $request)
 {
     $employeurpage = true;
     // Validation des données de la requête
+
+
+
+
     $values = $request->validate([
         'email' => 'required|email', // Ne pas utiliser 'unique' ici, car nous voulons valider l'existence de l'utilisateur
         'password' => 'required|min:2',
@@ -69,7 +73,15 @@ public function login(Request $request)
     if (Auth::attempt(['email' => $values['email'], 'password' => $values['password']])) {
         // Rediriger vers la page d'accueil ou la page prévue après la connexion
 
-            return redirect()->intended('/profile');
+  $user=Auth::user();
+   if ($user->is_blocked) {
+       Auth::logout();
+          return redirect()->route('formlogin')
+          ->withErrors(['error' => 'Votre compte a été bloqué.']);
+       }else{
+        return redirect()->intended('/profile');
+  }
+
 
     } else {
         // Rediriger vers la page précédente avec un message d'erreur

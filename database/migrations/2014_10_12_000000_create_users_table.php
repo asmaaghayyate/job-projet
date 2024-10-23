@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('sexe')->nullable();
             $table->string('niveau_etude')->nullable();
             $table->string('annees_experiences')->nullable();
+            $table->boolean('is_blocked')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

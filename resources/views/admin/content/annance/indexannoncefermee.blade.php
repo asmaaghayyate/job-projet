@@ -11,7 +11,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">Annances</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">/
+                <h4 class="content-title mb-0 my-auto">Annances fermées</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">/
                     List</span>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         @php
-         $columns = ['Employeur', 'Entreprise', 'Titre de l\'annance','Date de creation' ,'Description','Ville', 'Categorie', 'etat',"Changer l'état",'Action'];
+         $columns = ['Employeur', 'Entreprise', 'Titre de l\'annonce','Date de creation' ,'Description','Ville', 'Categorie', 'etat',"Changer l'état",'Action'];
                         @endphp
                         <table class="table table-hover mb-0 text-md-nowrap">
                             <thead>

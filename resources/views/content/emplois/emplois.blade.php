@@ -68,14 +68,9 @@
 
 		</ul>
 
-		<div class="clearfix"></div>
-
-		<div class="pagination-container">
-            {{ $annances->links() }}
-		</div>
 
 	</div>
-
+    {{ $annances->links() }}
 
 	<!-- Widgets -->
 

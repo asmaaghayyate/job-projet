@@ -324,7 +324,7 @@ color: rgb(89, 89, 89);
                 @if(Auth::check())
                 <li>
                  <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                </i> logout</a>
+                </i> Deconnexion</a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
