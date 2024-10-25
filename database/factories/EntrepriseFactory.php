@@ -20,9 +20,10 @@ class EntrepriseFactory extends Factory
         return [
             'name' => $this->faker->company(), // Nom de l'entreprise
             'adresse' => $this->faker->address(), // Adresse
-            'image' => $this->faker->imageUrl(640, 480, 'business'), // URL d'une image
+            'image' => 'entreprise/job-list-logo-01.png',
             'description' => $this->faker->paragraph(), // Description
             'user_id' => User::factory(), // Crée un utilisateur associé
         ];
     }
 }
+// <img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">

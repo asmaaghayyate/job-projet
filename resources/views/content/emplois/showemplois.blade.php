@@ -41,7 +41,14 @@
 
                     <!-- Company Info -->
                     <div class="company-info">
-                        <img src="{{ asset('assets/images/company-logo.png')}}" alt="">
+
+                  @if ($annance->entreprise->image)
+                   <img src="{{ asset('storage/' . $annance->entreprise->image) }}" alt="Image de l'entreprise">
+                    @else
+                  <img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">
+                    @endif
+
+
 
                         <div class="content">
                             <h4>{{$annance->entreprise->name}}</h4>

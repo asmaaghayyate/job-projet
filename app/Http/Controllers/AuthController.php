@@ -58,11 +58,11 @@ public function callbackgoogle() {
 
 public function login(Request $request)
 {
+
+   // dd($request);
+
     $employeurpage = true;
     // Validation des données de la requête
-
-
-
 
     $values = $request->validate([
         'email' => 'required|email', // Ne pas utiliser 'unique' ici, car nous voulons valider l'existence de l'utilisateur
@@ -89,6 +89,9 @@ public function login(Request $request)
             'email' => 'These credentials do not match our records.',
         ])->withInput(); // Garde les anciennes valeurs de l'input
     }
+
+
+
 }
 
 

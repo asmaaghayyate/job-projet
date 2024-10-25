@@ -17,14 +17,21 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
+       // dd($request->getMethod());
+
+
+        // if ($request->isMethod('post')) {
+        //     return redirect(RouteServiceProvider::HOME);
+        // }
+
         $guards = empty($guards) ? [null] : $guards;
 
         // Vérifie chaque guard passé en paramètre
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
+            if (Auth::guard($guard)->check() ) {
                 // Redirige l'utilisateur vers la page d'accueil ou autre page (par exemple un dashboard)
                 // en fonction du guard authentifié
-                if ($guard === 'admin') {
+                if ($guard === 'admin' ) {
                     // Si l'utilisateur est authentifié en tant qu'admin, on redirige vers le tableau de bord admin
                     return redirect()->route('admin.dashboard');
                 } else {
@@ -35,8 +42,9 @@ class RedirectIfAuthenticated
         }
 
         // Si l'utilisateur n'est pas authentifié avec aucun des guards, on laisse passer la requête
+
         return $next($request);
 
-        
+
     }
 }

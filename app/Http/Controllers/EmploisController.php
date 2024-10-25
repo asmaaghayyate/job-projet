@@ -13,7 +13,6 @@ class EmploisController extends Controller
 public function emplois(Request $request){
 
 
-
     $query = Annance::query();
 
     if (!empty($request->categorie && empty($request->ville))) {
@@ -51,12 +50,17 @@ $categories = $annances->pluck('categorie')->unique()->toArray();
 }
 
 
+
+
 public function showemplois($slug){
 
     $annance = Annance::where('slug', $slug)->firstOrFail();
 return view('content.emplois.showemplois',compact('annance'));
 
 }
+
+
+
 
 
 

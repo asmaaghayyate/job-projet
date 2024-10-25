@@ -11,7 +11,7 @@
 
 <!-- Container -->
 <div  style="padding-left: 10px;padding-bottom: 10px; padding-top: 10px; background-color:#EFEFEF" >
-	<h3><strong>Mes Annances publiee</strong></h3>
+	<h3><strong>Mes Annonces publiee</strong></h3>
   </div>
 
 
@@ -62,7 +62,7 @@
 
 
 <div  style="padding-left: 10px;padding-bottom: 10px; padding-top: 10px; background-color:#EFEFEF" >
-	<h3><strong>Mes Annances En attente</strong></h3>
+	<h3><strong>Mes Annonces En attente</strong></h3>
   </div>
 
   @if ($mesannancesenattente->count()==0)

@@ -9,6 +9,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\EmploisController;
 use App\Http\Controllers\EmployeurController;
+use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileemployeurController;
 use App\Models\Annance;
@@ -28,11 +29,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/admin', function () {
-    return view('Admin.auth.formloginadmin');
+    return view('admin.auth.formloginadmin');
 })->middleware('guest:admin')->name('formloginadmin');
 
-Route::get('/admin/index', function () {
 
+Route::post('/admin/login',[AuthAdminController::class,'login'])->name('loginadmin');
+Route::post('logout/admin',  [AuthAdminController::class,"logout"])->name('logoutadmin');
+
+
+
+Route::get('/admin/index', function () {
 $utilisateurcount=User::all()->count();
 $annancespublieecount=Annance::where('etat','publiée')->count();
 $annancesenattentecount=Annance::where('etat','en attente')->count();
@@ -45,9 +51,6 @@ $annancesfermeecount=Annance::where('etat','fermée')->count();
 
 
 
-
-Route::post('/admin/login',[AuthAdminController::class,'login'])->name('loginadmin');
-Route::post('logout/admin',  [AuthAdminController::class,"logout"])->name('logoutadmin');
 
 
 
@@ -73,9 +76,9 @@ Route::post('/admin/utilisateur/{user}/toggle-block',  'toggleBlock')->name('adm
 });
 
 
-Route::resource('admin' , AdminController::class)->middleware(['auth.admin']);
-
-
+Route::prefix('admin')->middleware(['auth.admin'])->group(function () {
+    Route::resource('admin', AdminController::class);
+});
 
 
 // Route::middleware(['auth.admin'])->group(function () {
@@ -95,13 +98,16 @@ Route::get('/', function () {
 
 
 
+Route::get('/login', function () {
+        return redirect()->route('formlogin');
+    });
+
 Route::controller(AuthController::class)->middleware(['guest'])->group(function () {
 Route::get('/login/form', 'formlogin')->name('formlogin');
 Route::post('/login', 'login')->name('login');
 
 Route::get('/auth/google', 'redirect')->name('google-auth');
 Route::get('/auth/google/call-back', 'callbackgoogle')->name('callbackgoogle');
-
 
 
 Route::get('/register/form', 'formregister')->name('formregister');
@@ -120,57 +126,53 @@ Route::post('logout', [AuthController::class,'logout'])->name('logout');
 
 Route::controller(EmploisController::class)->group(function () {
 Route::post('/emplois','emplois')->name('emplois');
-Route::get('/annance/{slug}','showemplois')->name('showemplois');
+Route::get('/annonce/{slug}','showemplois')->name('showemplois');
 });
 
 
 
-
-
-
-
-
-
-
-Route::controller(ProfileController::class)
+Route::controller(AnnanceController::class)
 ->middleware(['auth','CheckUserBlocked'])->group(function () {
-Route::get('/profile','monprofile') ->name('monprofile');
-Route::get('/profile/ajouter-entreprise', 'ameliorerprofileemployeur')
-->name('ajouterentreprise');
 
-Route::get('/profile/ameliorer-profile', 'ameliorerprofile')
-->name('ameliorerprofile');
-
-Route::get('profile/mesentreprises','mesentreprises') ->name('mesentreprises');
-Route::get('profile/mesannances','mesannances') ->name('mesannances');
-});
-
-
-
-
-
-Route::get('/publierannance',[AnnanceController::class,'publierannance'])
-->name('publierannance')->middleware(['auth','CheckUserBlocked']);
-
-
-
-Route::controller(EmployeurController::class)->middleware(['auth','CheckUserBlocked'])->group(function () {
-Route::post('/profile/store-entreprise','store')->name('store.entreprise');
+Route::get('/publier-annonce','publierannance')->name('publierannance');
+Route::get('/profile/message-annonce','messageannance')->name('messageannance');
 Route::post('/profile/store-annance','storeannance')->name('store.annance');
-Route::get('/profile/messageannance','messageannance')->name('messageannance');
+Route::get('profile/mesannonces','index') ->name('index.annonces');
+});
+
+
+
+Route::controller(ProfileController::class)->middleware(['auth','CheckUserBlocked'])->group(function () {
+
+Route::get('/profile','monprofile') ->name('monprofile');
 Route::post('/profile/update','update') ->name('update.profile');
+Route::get('/profile/ameliorer-profile', 'ameliorerprofile')->name('ameliorerprofile');
 
 });
+
+
+Route::controller(EntrepriseController::class)->middleware(['auth','CheckUserBlocked'])->group(function () {
+//Route::post('/profile/store-entreprise','store')->name('store.entreprise');
+
+Route::get('/profile/ajouter-entreprise', 'create')->name('store.entreprise');
+Route::post('/profile/store-entreprise','store')->name('store');
+
+Route::get('profile/mesentreprises','index') ->name('entreprise.index');
+Route::get('profile/entreprise/{entreprise}/destroy','destroy') ->name('entreprise.destroy');
+
+
+});
+
 
 
 
 Route::controller(CandidatureController::class)->middleware(['auth','CheckUserBlocked'])->group(function () {
 
- Route::get('/profile/postuler/{annance}', 'postuleremplois')
- ->name('postuleremplois')->middleware('Verifypostule');
 
- Route::post('/candidature/store/{annance}','store')
-    ->name('store.candidature');
+ Route::get('/profile/postuler/{annance}', 'postuleremplois')->name('postuleremplois')->middleware('Verifypostule');
+
+
+ Route::post('/candidature/store/{annance}','store')->name('store.candidature');
 
 Route::get('/candidature/message','messagecandidature')->name('messagecandidature');
 
@@ -179,6 +181,9 @@ Route::get('/mescandidatures/index','mescandidatures')->name('mescandidatures');
 
 Route::post('/candidatures/update/{candidature}','updatetatcandidature')
 ->name('updatetatcandidature');
+
+
+
 
 
 

@@ -49,7 +49,7 @@
 
                             <ul>
                                 <i class="fas fa-pencil-alt icon-color" style="font-size: 16px;"></i>
-                                <a href="{{route('ajouterentreprise')}}">
+                                <a href="{{route('store.entreprise')}}">
                                     &nbsp<strong>Ajouter Entreprise</strong></a>
 
                             </ul>
@@ -61,7 +61,7 @@
 
                             <ul>
                                 <i class="fas fa-star icon-color" style="font-size: 16px;"></i>
-                                <a href="{{route('mesentreprises')}}"> &nbsp<strong>Mes Entreprises</strong></a>
+                                <a href="{{route('entreprise.index')}}"> &nbsp<strong>Mes Entreprises</strong></a>
 
                             </ul>
 
@@ -73,7 +73,7 @@
 
                             <ul>
                                 <i class="fas fa-folder icon-color" style="font-size: 16px;"></i>
-              <a href="{{route('mesannances')}}"> &nbsp<strong>Mes Annances</strong></a>
+              <a href="{{route('index.annonces')}}"> &nbsp<strong>Mes Annonces</strong></a>
 
                             </ul>
 

@@ -27,7 +27,7 @@
 					</ul>
 				</div>
 				@endif
-<form action="{{route('store.entreprise')}}" method="post" enctype="multipart/form-data" >
+<form action="{{route('store')}}" method="post" enctype="multipart/form-data" >
 @csrf
 
 <div class="form">

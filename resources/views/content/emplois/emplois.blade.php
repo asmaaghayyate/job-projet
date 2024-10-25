@@ -58,7 +58,7 @@
 						<span><i class="fa fa-map-marker"></i> {{$annance->ville}}</span>
 
 					</div>
-                    <p> {{ Str::limit($annance->description, 170, '...')  }}</p>
+                    <p> {!! Str::limit($annance->description, 170, '...')  !!}</p>
 				</div>
 				</a>
 				<div class="clearfix"></div>

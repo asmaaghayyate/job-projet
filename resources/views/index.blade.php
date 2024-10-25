@@ -79,8 +79,38 @@ Nous avons plus de   <strong>{{ $toutlesemploiscount }} </strong> offres d'emplo
 		<div class="clearfix"></div>
 		<div class="margin-top-30"></div>
 
-		<a href="browse-categories.html" class="button centered">Parcourir toutes les catégories</a>
-		<div class="margin-bottom-50"></div>
+	<a href="javascript:void(0);" class="button centered" id="browse-categories">Parcourir les catégories</a>
+<br>
+<div class="categories" style="display: none;">
+    <!-- Contenu des catégories ici -->
+    <ul id="popular-categories">
+
+        <li><a href="#"><i class="fa fa-bullhorn"></i> Spécialistes en Marketing Digital</a></li>
+        <li><a href="#"><i class="fa fa-briefcase"></i> Services aux Entreprises</a></li>
+        <li><a href="#"><i class="fas fa-user-tie"></i> Assistants Virtuels</a></li>
+        <li><a href="#"><i class="fas fa-headset"></i> Agents de Service Client</a></li>
+        <li><a href="#"><i class="fa fa-chart-line"></i> Finance et Comptabilité</a></li>
+        <li><a href="#"><i class="fa fa-calculator"></i> Comptables</a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i> Vente et Commercial</a></li>
+        <li><a href="#"><i class="fas fa-user-tie"></i> Représentants Commerciaux</a></li>
+        <li><a href="#"><i class="fas fa-chalkboard-teacher"></i> Éducation et Formation</a></li>
+        <li><a href="#"><i class="fas fa-book-open"></i> Formateurs</a></li>
+        <li><a href="#"><i class="fa fa-heartbeat"></i> Santé et Bien-être</a></li>
+        <li><a href="#"><i class="fas fa-apple-alt"></i> Nutritionnistes</a></li>
+
+            </ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#browse-categories').click(function() {
+        $('.categories').toggle();
+    });
+});
+</script>
+
+
 	</div>
 </div>
 
@@ -101,11 +131,14 @@ Nous avons plus de   <strong>{{ $toutlesemploiscount }} </strong> offres d'emplo
     <a href="{{route('showemplois',$dernieresannance->slug)}}">
 
 
+
       @if ($dernieresannance->entreprise->image)
-     <img src="{{ asset('storage/' . $dernieresannance->entreprise->image) }}" alt="Imagfgdfge de l'entreprise">
+     <img src="{{ asset('storage/' . $dernieresannance->entreprise->image) }}" alt="Image de l'entreprise">
         @else
-        <img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">
+    <img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">
         @endif
+
+
 
 				<div class="job-list-content">
 

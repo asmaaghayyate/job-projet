@@ -13,49 +13,40 @@ class ProfileController extends Controller
 
 
 
-
-
-
-
-
 public function monprofile(){
     $profileActive = true;
     return view('content.profile.profile',compact('profileActive'));
 
     }
 
-
-    public function ameliorerprofileemployeur(){
-        return view('content.profile.ajouterentreprise');
-    }
-
-
- public function ameliorerprofile(){
+    public function ameliorerprofile(){
         return view('content.profile.ameliorerprofile');
     }
 
 
-public function mesentreprises(){
 
-    $user = Auth::user()->id;
-    $mesentreprises=Entreprise::where('user_id', $user)
-    ->get();
-    return view('content.profile.mesentreprises',compact('mesentreprises'));
-}
+    public function update(Request $request){
+            //dd($request->cv);
 
 
+            $user =Auth::user();
+
+           $values['phone']=$request->phone;
+           $values['sexe']=$request->sexe;
+           $values['niveau_etude']=$request->niveau_etude;
+           $values['annees_experiences']=$request->annees_experiences;
+           if( $request->file('cv')){
+
+           $values['cv']=$request->file('cv')->store('cvs','public');
+           }
+
+           $user->update($values);
+           //User::save();
+            return redirect()->route('monprofile')->with('success','Votre profile a ete bien modifie');
 
 
-public function mesannances(){
-    $user = Auth::user()->id;
-    $mesannancespubliee=Annance::where('etat','publiée')
-    ->where('user_id', $user)
-    ->get();
-    $mesannancesenattente=Annance::where('etat','en attente')
-    ->where('user_id', $user)
-    ->get();
-    return view('content.profile.mesannances',compact('mesannancespubliee','mesannancesenattente'));
-}
+           }
+
 
 
 

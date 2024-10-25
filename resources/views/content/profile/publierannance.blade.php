@@ -43,7 +43,7 @@
                    <h5>  <strong> Titre de l'emploi <span style="color: red">*</span></strong> </h5>
                     </div>
                     <div class="col-md-9">
-                        <input class="search-field" type="text" placeholder="Titre" name="titre" id="titre"/>
+                        <input class="search-field" value="{{ old('titre') }}"  type="text" placeholder="Titre" name="titre" id="titre"/>
                     </div>
 
                 </div>
@@ -55,6 +55,7 @@
                     </div>
                     <div class="col-md-9">
                         <select data-placeholder="Choisir categorie" class="chosen-select" multiple name="categorie" id="categorie">
+
 
                             <option value="developpeurs web">Développeurs Web</option>
                                 <option value="developpeurs mobiles">Développeurs Mobiles</option>
@@ -185,7 +186,13 @@
                     <div class="col-md-9">
                         <select data-placeholder="Choisir entreprise" class="chosen-select" multiple name="entreprise_id" id="entreprise_id">
                             @foreach ($entreprises as $entreprise)
-                            <option value="{{$entreprise->id}}">{{$entreprise->name}}</option>
+
+                                    <option value="{{ $entreprise->id }}"
+                                        {{ old('entreprise_id') == $entreprise->id ? 'selected' : '' }}>
+                                       {{ $entreprise->name }}
+                                    </option>
+
+                                </option>
                             @endforeach
                         </select>
                      </div>
@@ -202,9 +209,9 @@
                     </div>
                     <div class="col-md-9">
                         <select data-placeholder="Choisir type" class="chosen-select" multiple name="type_emploi" id="type_emploi">
-                            <option value="temps plein">Temps plein</option>
-                            <option value="temps partiel">Temps partiel</option>
-                            <option value="stage">Stage</option>
+                            <option value="temps plein"  {{ old('type_emploi') == "temps plein" ? 'selected' : '' }}>Temps plein</option>
+                            <option value="temps partiel"  {{ old('type_emploi') == "temps partiel" ? 'selected' : '' }}>Temps partiel</option>
+                            <option value="stage"  {{ old('type_emploi') == "stage" ? 'selected' : '' }}>Stage</option>
 
                         </select>
                      </div>
@@ -219,8 +226,8 @@
                         <h5> <strong>Description <span style="color: red">*</span></strong> </h5>
                     </div>
                     <div class="col-md-9">
-                        <textarea  name="description" id="description" cols="40"
-                        rows="3" id="summary"  ></textarea>
+                        <textarea  name="description" id="description"   cols="40"
+                        rows="3" id="summary"  >{{ old('description') }}</textarea>
 
                      </div>
 

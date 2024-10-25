@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         @php
-         $columns = ['Employeur', 'Entreprise', 'Titre de l\'annance','Date de creation' ,'Description','Ville', 'Categorie', 'etat',"Changer l'état",'Action'];
+         $columns = ['Employeur', 'Entreprise', 'Titre de l\'annonce','type d\'emploi','Date de creation' ,'Description','Ville', 'Categorie', 'etat',"Changer l'état",'Action'];
                         @endphp
                         <table class="table table-hover mb-0 text-md-nowrap">
                             <thead>
@@ -48,6 +48,7 @@
                                         <td>{{ $item->user?->name }}</td>
                                         <td>{{ $item->entreprise?->name }}</td>
                                         <td>{{ $item->titre }}</td>
+                                         <td>{{ $item->type_emploi }}</td>
                                          <td>{{ $item->created_at }}</td>
                                         <td>{!! Str::limit($item->description, 25, '...')  !!}</td>
                                         <td>{{ $item->ville }}</td>
