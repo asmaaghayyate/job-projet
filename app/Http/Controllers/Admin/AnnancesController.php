@@ -46,7 +46,9 @@ class AnnancesController extends Controller
      $annance->etat = $request->etat;
      $annance->save();
 
-return redirect()->route('admin.lesannances')->with('success', 'L\'état de l\'annonce a été mis à jour avec succès.');
+
+    return redirect()->back()
+    ->with('success', 'l\'annonce a été mis à jour  avec succès.');
 
 
     }
@@ -61,9 +63,16 @@ return redirect()->route('admin.lesannances')->with('success', 'L\'état de l\'a
     $annance->is_blocked = !$annance->is_blocked;
     $annance->save();
 
+    // $annances=Annance::where('id',$annance->id);
+
+    // $annances->update(['etat'=>'fermée']);
+
 
     return redirect()->back()
     ->with('success', 'L\'annonce a été ' . ($annance->is_blocked ? 'bloqué' : 'débloqué') . '.');
+
+
+
 }
 
 
@@ -76,29 +85,24 @@ public function destroy(Annance $annance){
             // $client->user()->delete();
         }
 
-    if($annance->etat=="fermee"){
-    return redirect()->route('admin.lesannances.fermee')
-    ->with('success', 'l\'annonce a été supprimée avec succès.');
+    return redirect()->back()
+    ->with('success', 'L\'annonce a été ' . 'l\'annonce a été supprimée avec succès.');
 
-   }elseif($annance->etat=="en attente"){
-    return redirect()->route('admin.lesannances.enattente')
-    ->with('success', 'l\'annonce a été supprimée avec succès.');
-
-    }else{
-    return redirect()->route('admin.lesannances.publiee')
-    ->with('success', 'l\'annonce a été supprimée avec succès.');
-
-    }
-
-
-
-
-
-
-    }
 
 }
 
+}
+
+
+
+    public function titre(Request $request){
+
+   $lesannances=Annance::where('titre' ,'like',$request->titre.'%')
+   ->paginate(2);
+
+   return view('admin.content.annance.index',compact('lesannances'));
+
+    }
 
 
 

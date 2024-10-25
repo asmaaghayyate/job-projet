@@ -79,23 +79,15 @@
                                         </td>
 
                                         <td class="d-flex">
-                                            <form action="{{route('admin.annonce.toggle-blockd', $item->id)}}"
-                                                method="POST" style="display:inline;">
-                                               @csrf
-                                               <button type="submit" class="btn {{ $item->is_blocked ? 'btn-warning' : 'btn-success' }} btn-sm"
-                                                   style="margin-right:40%">
-                                                   {{ $item->is_blocked ? 'Débloquer' : 'Bloquer' }}
-                                               </button>
-                                           </form>
 
                                             <form id="delete-user-form-{{ $item->id }}"
-                                                action="{{ route('admin.annances.destroy', $item) }}" method="POST"
+                                                action="{{ route('admin.annonce.destroy', $item) }}" method="POST"
                                                 style="display: none;">
                                                 @csrf
                                                 @method('delete')
                                             </form>
                                             <button onclick="confirmUserDelete({{ $item->id }});"
-                                                class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                                                class="btn btn-danger btn-sm"><i class="fa-solid fa-trash" ></i></button>
 
                                             <script>
                                                 function confirmUserDelete(itemId) {
@@ -114,7 +106,16 @@
                                                     });
                                                 }
                                             </script>
-                                        </td>
+
+    <form action="{{ route('admin.annonce.toggle-blockd', $item->id) }}" method="POST" style="display:inline;">
+        @csrf
+        <button type="submit" class="btn {{ $item->is_blocked ? 'btn-warning' : 'btn-success' }} btn-sm"
+            style="margin-left:20%">
+            {{ $item->is_blocked ? 'Débloquer' : 'Bloquer' }}
+        </button>
+    </form>
+
+                                            </td>
 
                                     </tr>
                                 @endforeach

@@ -66,7 +66,7 @@
         <li><a class="slide-item" href="{{route('admin.lesannances.fermee')}}">Annonces fermées</a>
         </li>
 
-    
+
     </li>
     <li><a class="slide-item" href="{{ route('admin.index') }}">Admins</a>
     </li>

@@ -17,18 +17,21 @@ public function emplois(Request $request){
 
     if (!empty($request->categorie && empty($request->ville))) {
         $query->where('categorie', 'like', trim($request->categorie) . "%")
-        ->where('etat', "publiée");
+        ->where('etat', "publiée")
+        ->where('is_blocked','false');
     }
 
     if (!empty($request->ville && empty($request->categorie))) {
         $query->orWhere('ville', 'like', trim($request->ville) . "%")
-        ->where('etat', "publiée");
+        ->where('etat', "publiée")
+        ->where('is_blocked','false');
     }
 
     if (!empty($request->categorie) && !empty($request->ville)) {
         $query->where('categorie', 'like', trim($request->categorie) . "%")
         ->where('ville', 'like', trim($request->ville) . "%")
-        ->where('etat', "publiée");
+        ->where('etat', "publiée")
+        ->where('is_blocked','false');
     }
 
    //dd($query->get());

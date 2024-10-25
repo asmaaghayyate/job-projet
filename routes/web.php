@@ -53,7 +53,6 @@ $annancesfermeecount=Annance::where('etat','fermée')->count();
 
 
 
-
 Route::controller(AnnancesController::class)->middleware(['auth.admin'])->group(function () {
 Route::get('/admin/annances','index')->name('admin.lesannances');
 
@@ -61,8 +60,9 @@ Route::get('/admin/annances/en-attente','indexenattente')->name('admin.lesannanc
 Route::get('/admin/annances/publiee','indexpubliee')->name('admin.lesannances.publiee');
 Route::get('/admin/annances/fermee','indexfermee')->name('admin.lesannances.fermee');
 
+Route::post('/admin/annance/titre','titre')->name('admin.annonce.titre');
 
-Route::delete('/admin/annances/destroy/{annance}','destroy')->name('admin.annances.destroy');
+Route::delete('/admin/annances/destroy/{annance}','destroy')->name('admin.annonce.destroy');
 Route::post('/admin/updatetat/{annance}','updatetat')->name('updatetat');
 
 Route::post('/admin/annonce/{annance}/toggle-block',
@@ -95,8 +95,12 @@ Route::prefix('admin')->middleware(['auth.admin'])->group(function () {
 
 
 Route::get('/', function () {
-    $toutlesemploiscount=Annance::where('etat','publiée')->count();
-    $dernieresannances = Annance::where('etat','publiée')->latest()->take(5)->get();
+    $toutlesemploiscount=Annance::where('etat','publiée')
+    ->where('is_blocked','false')
+    ->count();
+    $dernieresannances = Annance::where('etat','publiée')
+    ->where('is_blocked','false')
+    ->latest()->take(5)->get();
  return view('index',compact('toutlesemploiscount','dernieresannances'));
     })->name('index');
 

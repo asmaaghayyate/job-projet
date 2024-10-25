@@ -27,7 +27,7 @@
 
 				<!-- Browse Jobs -->
 				<div class="browse-jobs">
- Parcourir les offres d'emploi par  <a href="browse-categories.html"> catégorie</a>  ou par  localisation
+ Parcourir les offres d'emploi par  <a href=""> catégorie</a>  ou par  localisation
                 </div>
 
 				<!-- Announce -->

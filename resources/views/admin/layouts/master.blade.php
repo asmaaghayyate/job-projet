@@ -84,8 +84,24 @@
                             <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
                         </div>
                         <div class="main-header-center ml-3 d-sm-none d-md-none d-lg-block">
-                            <input class="form-control" placeholder="Search for anything..." type="search"> <button
-                                class="btn"><i class="fas fa-search d-none d-md-block"></i></button>
+
+                        @isset($lesannances)
+                        <form action="{{route('admin.annonce.titre')}}" method="post">
+                            @csrf
+                            <input class="form-control" placeholder="Search for anything..." type="search" name="titre" id="titre">
+                            <button  class="btn" type="submit">
+                                <i class="fas fa-search d-none d-md-block">
+                                    </i></button>
+                         </form>
+                         @else
+                         <input class="form-control" placeholder="Search for anything..." type="search">
+                         <button  class="btn">
+                             <i class="fas fa-search d-none d-md-block">
+                                 </i></button>
+                        @endisset
+
+
+
                         </div>
                     </div>
                     <div class="main-header-right">
@@ -117,7 +133,7 @@
                                                     src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Fdefault-user-icon%2Fdefault-user-icon-3.jpg&f=1&nofb=1&ipt=3ef62c835b40da152fda723e6bb14e8fa2f6f11c6ce5ec2d7909b0410bbfb47d&ipo=images"
                                                     class=""></div>
                                             <div class="ml-3 my-auto">
-                                                <h6>{{ Auth::guard('admin')->user()->name }}</h6> 
+                                                <h6>{{ Auth::guard('admin')->user()->name }}</h6>
                                             </div>
                                         </div>
                                     </div>
