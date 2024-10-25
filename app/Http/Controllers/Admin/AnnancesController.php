@@ -53,6 +53,21 @@ return redirect()->route('admin.lesannances')->with('success', 'L\'état de l\'a
 
 
 
+ public function toggleBlock(Annance $annance)
+{
+    //$user = User::findOrFail($id);
+
+   //dd($user->is_blocked );
+    $annance->is_blocked = !$annance->is_blocked;
+    $annance->save();
+
+
+    return redirect()->back()
+    ->with('success', 'L\'annonce a été ' . ($annance->is_blocked ? 'bloqué' : 'débloqué') . '.');
+}
+
+
+
 public function destroy(Annance $annance){
 
     {

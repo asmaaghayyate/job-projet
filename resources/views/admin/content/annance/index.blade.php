@@ -79,9 +79,15 @@
                                         </td>
 
                                         <td class="d-flex">
-                                            <a href=""
-                                                class="btn btn-warning btn-sm" style="margin-right: 5px"><i
-                                                    class="fa-solid fa-pen "></i></a>
+
+                                            <form action="{{route('admin.annonce.toggle-blockd', $item->id)}}"
+                                                 method="POST" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn {{ $item->is_blocked ? 'btn-warning' : 'btn-success' }} btn-sm"
+                                                    style="margin-right:40%">
+                                                    {{ $item->is_blocked ? 'Débloquer' : 'Bloquer' }}
+                                                </button>
+                                            </form>
 
                                             <form id="delete-user-form-{{ $item->id }}"
                                                 action="{{ route('admin.annances.destroy', $item) }}" method="POST"

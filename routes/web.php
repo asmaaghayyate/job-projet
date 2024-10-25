@@ -64,6 +64,10 @@ Route::get('/admin/annances/fermee','indexfermee')->name('admin.lesannances.ferm
 
 Route::delete('/admin/annances/destroy/{annance}','destroy')->name('admin.annances.destroy');
 Route::post('/admin/updatetat/{annance}','updatetat')->name('updatetat');
+
+Route::post('/admin/annonce/{annance}/toggle-block',
+  'toggleBlock')->name('admin.annonce.toggle-blockd');
+
 });
 
 

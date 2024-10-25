@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('ville');
             $table->string('categorie');
             $table->string('type_emploi');
-
+            $table->boolean('is_blocked')->default(false);
             $table->timestamps();
         });
     }
