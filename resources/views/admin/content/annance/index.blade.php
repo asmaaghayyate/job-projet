@@ -123,7 +123,8 @@
                         </table>
 
                         <div class="pagination-container">
-                            {{ $lesannances->links() }}
+                            {{-- {{ $lesannances->links() }} --}}
+                            {{ $lesannances->appends(request()->input())->links() }}
                         </div>
 
 

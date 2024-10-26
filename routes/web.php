@@ -60,7 +60,7 @@ Route::get('/admin/annances/en-attente','indexenattente')->name('admin.lesannanc
 Route::get('/admin/annances/publiee','indexpubliee')->name('admin.lesannances.publiee');
 Route::get('/admin/annances/fermee','indexfermee')->name('admin.lesannances.fermee');
 
-Route::post('/admin/annance/titre','titre')->name('admin.annonce.titre');
+Route::match(['get', 'post'],'/admin/annance/titre','titre')->name('admin.annonce.titre');
 
 Route::delete('/admin/annances/destroy/{annance}','destroy')->name('admin.annonce.destroy');
 Route::post('/admin/updatetat/{annance}','updatetat')->name('updatetat');
@@ -93,7 +93,6 @@ Route::prefix('admin')->middleware(['auth.admin'])->group(function () {
 
 
 
-
 Route::get('/', function () {
     $toutlesemploiscount=Annance::where('etat','publiée')
     ->where('is_blocked','false')
@@ -101,6 +100,7 @@ Route::get('/', function () {
     $dernieresannances = Annance::where('etat','publiée')
     ->where('is_blocked','false')
     ->latest()->take(5)->get();
+
  return view('index',compact('toutlesemploiscount','dernieresannances'));
     })->name('index');
 
@@ -133,8 +133,14 @@ Route::post('logout', [AuthController::class,'logout'])->name('logout');
 
 
 Route::controller(EmploisController::class)->group(function () {
-Route::post('/emplois','emplois')->name('emplois');
+
+//Route::post('/emplois','emplois')->name('emplois');
+
+//Route::post('/emplois','filterEmplois')->name('filterEmplois');
+Route::match(['get', 'post'], '/emplois',  'filterEmplois')->name('filterEmplois');
+
 Route::get('/annonce/{slug}','showemplois')->name('showemplois');
+
 });
 
 

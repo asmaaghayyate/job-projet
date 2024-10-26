@@ -18,13 +18,12 @@
 
 				<!-- Form -->
 				<h2>Trouver un emploi</h2>
-                <form action="{{route('emplois')}}" method="POST">
-                 @csrf
-				<input type="text" class="ico-01" placeholder="Categorie" name="categorie" id="categorie" />
-				<input type="text" class="ico-02" placeholder="Ville" name="ville" name="ville" />
-				<button type="submit"><i class="fa fa-search"></i></button>
+                <form action="{{ route('filterEmplois') }}" method="POST">
+                    @csrf
+                    <input type="text" class="ico-01" placeholder="Categorie" name="categorie" id="categorie" />
+                    <input type="text" class="ico-02" placeholder="Ville" name="ville" />
+                    <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
-
 				<!-- Browse Jobs -->
 				<div class="browse-jobs">
  Parcourir les offres d'emploi par  <a href=""> catégorie</a>  ou par  localisation
@@ -47,7 +46,8 @@ Nous avons plus de   <strong>{{ $toutlesemploiscount }} </strong> offres d'emplo
 ================================================== -->
 
 <!-- Categories -->
-<div class="container">
+
+
 	<div class="sixteen columns">
 		<h3 class="margin-bottom-25">Catégories populaires</h3>
 		<ul id="popular-categories">
@@ -126,8 +126,8 @@ $(document).ready(function() {
 
 		<ul class="job-list">
 
-@foreach ($dernieresannances as $dernieresannance)
-<li class="">
+ @foreach ($dernieresannances as $dernieresannance)
+ <li class="">
     <a href="{{route('showemplois',$dernieresannance->slug)}}">
 
 

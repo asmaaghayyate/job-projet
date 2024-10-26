@@ -32,6 +32,12 @@
 			      		</div>
 
 			      	</div>
+                      @if(session('error'))
+                      <div class="alert alert-danger">
+                          {{ session('error') }}
+                      </div>
+                  @endif
+
 							<form action="{{route('loginadmin')}}"  method="POST" class="signin-form">
                                 @csrf
 			      		<div class="form-group mb-3">
@@ -44,9 +50,11 @@
 		            <div class="form-group mb-3">
 		            	<label class="label" for="password">Mot de passe</label>
 		              <input type="password" class="form-control" placeholder="Password" name="password" required>
+
                       @error('password')
                       <div class="alert alert-danger">{{ $message }}</div>
-                  @enderror
+                      @enderror
+
 		            </div>
 		            <div class="form-group">
 		            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">

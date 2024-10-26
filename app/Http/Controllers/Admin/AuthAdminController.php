@@ -12,6 +12,7 @@ class AuthAdminController extends Controller
 
     public function Login(Request $request)
     {
+       // dd($request);
         $this->validate($request, [
             'email' => 'required|email|exists:admins,email',
             'password' => 'required|min:2',
@@ -20,10 +21,12 @@ class AuthAdminController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('admin')->attempt($credentials)) {
+            //dd($credentials);
+
             return redirect()->intended('/admin/index');
         } else {
             return redirect()->back()->with([
-                'error' => 'These credentials do not match our records.',
+                'error' => 'Ces informations d\'identification ne correspondent pas à nos dossiers.',
             ]);
         }
     }

@@ -7,8 +7,8 @@
 <div id="titlebar"  class="photo-bg" style="background: url(images/job-page-photo.jpg)">
 	<div class="container">
 		<div class="ten columns" style="color: white !important;">
-			Nous avons trouvé <strong> &nbsp;&nbsp;{{ $annancescount }} &nbsp;&nbsp;</strong> emplois correspondant à :
-			<h2>{{ $categorie }}</h2>
+			Nous avons trouvé <strong> &nbsp;&nbsp;{{ $annancescount }} &nbsp;&nbsp;</strong> emplois.
+			{{-- <h2>{{ $categorie }}</h2> --}}
 		</div>
 
 
@@ -37,7 +37,7 @@
                 <a href="{{route('showemplois',$annance->slug)}}">
 				<img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">
 				<div class="job-list-content">
-
+                    <h4>	<strong>{{$annance->categorie}}</strong> </h4>
 				<h4>	<strong>{{$annance->titre}}</strong> </h4>
 
 					<div class="job-icons">
@@ -70,8 +70,8 @@
 
 
 	</div>
-    {{ $annances->links() }}
-
+    {{-- {{ $annances->links() }} --}}
+    {{ $annances->appends(request()->input())->links() }}
 	<!-- Widgets -->
 
 	<!-- Widgets / End -->
