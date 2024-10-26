@@ -94,17 +94,16 @@ public function destroy(Annance $annance){
 }
 
 
-
     public function titre(Request $request){
 
-
+        $titre = $request->input('titre');
    $lesannances=Annance::where('titre' ,'like',$request->titre.'%')
-   ->paginate(2);
+   ->paginate(10);
 
 
-   return view('admin.content.annance.index',compact('lesannances'));
+   return view('admin.content.annance.index',compact('titre','lesannances'));
 
-   
+
     }
 
 

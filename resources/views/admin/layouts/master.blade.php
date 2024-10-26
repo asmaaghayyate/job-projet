@@ -88,7 +88,7 @@
                         @isset($lesannances)
                         <form action="{{route('admin.annonce.titre')}}" method="post">
                             @csrf
-                            <input class="form-control" placeholder="Search for anything..."
+                            <input class="form-control" placeholder="Recherche par titre..."
                              type="search" name="titre" id="titre" value="{{ old('titre', isset($titre) ? $titre : '') }}">
                             <button  class="btn" type="submit">
                                 <i class="fas fa-search d-none d-md-block">
