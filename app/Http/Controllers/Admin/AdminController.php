@@ -40,11 +40,41 @@ public function store(Request $request){
         'password' => Hash::make($request->password),
     ]);
 
-    return redirect()->route('admin.admin.index')
-    ->with('success', 'Admin created successfully.');
+    return redirect()->route('admin.index')
+    ->with('success', 'L\'administrateur a été ajoute avec succès.');
 
 
 }
+
+
+public function edit(Admin $admin)
+{
+
+    return view('admin.content.admin.edit',
+     compact('admin'));
+}
+
+public function update(Request $request, Admin $admin){
+
+    $admin->update([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => $request->filled('password') ? Hash::make($request->password) : $admin->password,
+    ]);
+    return redirect()->route('admin.index')
+    ->with('success', 'L\'administrateur a été mis à jour avec succès.');
+}
+
+
+public function destroy(Admin $admin)
+{
+
+        $admin->delete();
+        return redirect()->route('admin.index')
+            ->with('success', 'L\'administrateur a été supprime avec succès.');
+
+}
+
 
 
 

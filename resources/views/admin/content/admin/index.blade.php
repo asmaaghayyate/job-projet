@@ -11,6 +11,8 @@
                     List</span>
             </div>
         </div>
+
+        
         <div class="d-flex my-xl-auto right-content">
             <div class="pr-1 mb-3 mb-xl-0">
                 <a href="{{ route('admin.create') }}" title="Create New admin" type="button"
@@ -21,7 +23,11 @@
         </div>
     </div>
     <!-- breadcrumb -->
-
+    @if (session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+    @endif
     <!-- row opened -->
     <div class="row row-sm">
 

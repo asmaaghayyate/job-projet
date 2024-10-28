@@ -52,7 +52,6 @@ $annancesfermeecount=Annance::where('etat','fermée')->count();
 
 
 
-
 Route::controller(AnnancesController::class)->middleware(['auth.admin'])->group(function () {
 Route::get('/admin/annances','index')->name('admin.lesannances');
 
