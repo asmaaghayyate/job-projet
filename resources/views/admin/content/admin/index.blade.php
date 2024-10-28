@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        
+        {{-- @if(Auth::guard('admin')->user()->can('creer_admin')) --}}
         <div class="d-flex my-xl-auto right-content">
             <div class="pr-1 mb-3 mb-xl-0">
                 <a href="{{ route('admin.create') }}" title="Create New admin" type="button"
@@ -21,6 +21,9 @@
                 </a>
             </div>
         </div>
+         {{-- @endif --}}
+
+
     </div>
     <!-- breadcrumb -->
     @if (session()->has('success'))
@@ -36,9 +39,22 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
+
+
                         @php
-                            $columns = ['Name', 'Email','Action'];
+                            $columns = ['Name', 'Email','permission'];
+
+                            if (Auth::guard('admin')->user()->can('modifier_admin')) {
+                            $columns[] = 'Modifier'; // Ajouter la colonne si la permission est présente
+                        }
+
+                        if (Auth::guard('admin')->user()->can('supprimer_admin')) {
+                            $columns[] = 'Supprimer'; // Ajouter la colonne si la permission est présente
+                        }
                         @endphp
+
+
+
                         <table class="table table-hover mb-0 text-md-nowrap">
                             <thead>
                                 <tr>
@@ -52,9 +68,28 @@
                                     <tr>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
+                                          <td>
 
 
-                                        <td class="d-flex">
+                                            @if($item->getAllPermissions()->isEmpty())
+                                            Aucune permission attribuée.
+                                        @else
+                                            @foreach($item->getAllPermissions() as $index => $permission)
+
+                                 <span class="badge badge-success">
+
+                                    {{ $permission->name }}
+
+                                </span>
+                                 @if (($index + 1) % 3 == 0)
+                                  <br>
+                                 @endif
+                                            @endforeach
+                                        @endif
+
+                                          </td>
+                                          @if (Auth::guard('admin')->user()->can('modifier_admin'))
+                                        <td >
                                             <a href="{{ route('admin.edit', $item) }}" class="btn btn-warning btn-sm"
                                                 style="margin-right: 5px"><i class="fa-solid fa-pen "></i></a>
 
@@ -64,6 +99,13 @@
                                                   @method('DELETE')
                                               </form>
 
+
+                                            </td>
+                                            @endif
+
+
+                                            @if (Auth::guard('admin')->user()->can('supprimer_admin'))
+                                        <td>
                                             <button onclick="confirmUserDelete({{ $item->id }});"
                                                 class="btn btn-danger btn-sm">
                                                 <i class="fa-solid fa-trash"></i>
@@ -88,6 +130,7 @@
                                                 }
                                             </script>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -14,7 +15,12 @@ class AdminController extends Controller
 
     public function index()
     {
-        $data = Admin::paginate(10); // Récupérer les utilisateurs avec le rôle "admin"
+
+
+
+        $data = Admin::with('permissions')->paginate(10); // Récupérer les utilisateurs avec le rôle "admin"
+
+
         return view('admin.content.admin.index', compact('data'));
     }
 
@@ -40,6 +46,10 @@ public function store(Request $request){
         'password' => Hash::make($request->password),
     ]);
 
+    if ($request->has('permissions')) {
+        $user->syncPermissions($request->input('permissions'));
+    }
+
     return redirect()->route('admin.index')
     ->with('success', 'L\'administrateur a été ajoute avec succès.');
 
@@ -61,6 +71,14 @@ public function update(Request $request, Admin $admin){
         'email' => $request->email,
         'password' => $request->filled('password') ? Hash::make($request->password) : $admin->password,
     ]);
+
+    if ($request->has('permissions')) {
+        $admin->syncPermissions($request->input('permissions'));
+    } else {
+        // Si aucune permission n'est cochée, retirer toutes les permissions
+        $admin->syncPermissions([]);
+    }
+
     return redirect()->route('admin.index')
     ->with('success', 'L\'administrateur a été mis à jour avec succès.');
 }

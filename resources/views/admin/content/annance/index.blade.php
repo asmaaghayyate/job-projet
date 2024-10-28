@@ -32,7 +32,19 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         @php
-         $columns = ['Employeur', 'Entreprise', 'Titre de l\'annonce','type d\'emploi','Date de creation' ,'Description','Ville', 'Categorie', 'etat',"Changer l'état",'Action'];
+                        $columns = ['Employeur', 'Entreprise', 'Titre de l\'annonce', 'Type d\'emploi', 'Date de création', 'Description', 'Ville', 'Catégorie', 'État'];
+
+                        if (Auth::guard('admin')->user()->can('changer_etat_annonce')) {
+                            $columns[] = 'Changer l\'état'; // Ajouter la colonne si la permission est présente
+                        }
+
+                        if (Auth::guard('admin')->user()->can('supprimer_annonce')) {
+                            $columns[] = 'Supprimer'; // Ajouter la colonne si la permission est présente
+                        }// Toujours afficher la colonne Action
+                        if (Auth::guard('admin')->user()->can('bloquer_annonce')) {
+                            $columns[] = 'Bloquer'; // Ajouter la colonne si la permission est présente
+                        }
+
                         @endphp
                         <table class="table table-hover mb-0 text-md-nowrap">
                             <thead>
@@ -44,7 +56,8 @@
                             </thead>
                             <tbody>
                                 @foreach ($lesannances as $item)
-                                    <tr>
+                                <tr class="{{ $item->is_blocked ? 'custom-warning' : '' }}">
+
                                         <td>{{ $item->user?->name }}</td>
                                         <td>{{ $item->entreprise?->name }}</td>
                                         <td>{{ $item->titre }}</td>
@@ -61,7 +74,9 @@
                                         </td>
 
 
-                                        <td >
+
+                                            @if(Auth::guard('admin')->user()->can('changer_etat_annonce'))
+                                            <td >
                                             <form action="{{route('updatetat',$item->id)}}" method="POST">
                                                 @csrf
                                                 <div class="form-group">
@@ -74,12 +89,12 @@
                                                 </div>
                                                 <button type="submit" class="btn btn-primary btn-sm">Modifier</button>
                                             </form>
+                                                    </td>
+                                                  @endif
 
 
-                                        </td>
-
-                                        <td class="d-flex">
-
+                               @if (Auth::guard('admin')->user()->can('supprimer_annonce'))
+                                        <td style="text-align: center">
                                             <form id="delete-user-form-{{ $item->id }}"
                                                 action="{{ route('admin.annonce.destroy', $item) }}" method="POST"
                                                 style="display: none;">
@@ -87,7 +102,8 @@
                                                 @method('delete')
                                             </form>
                                             <button onclick="confirmUserDelete({{ $item->id }});"
-                                                class="btn btn-danger btn-sm"><i class="fa-solid fa-trash" ></i></button>
+                                                class="btn btn-danger btn-sm"><i class="fa-solid fa-trash" >
+                                                    </i></button>
 
                                             <script>
                                                 function confirmUserDelete(itemId) {
@@ -106,17 +122,22 @@
                                                     });
                                                 }
                                             </script>
+                                       </td>
+                                     @endif
 
+
+@if (Auth::guard('admin')->user()->can('bloquer_annonce'))
+<td>
     <form action="{{ route('admin.annonce.toggle-blockd', $item->id) }}" method="POST" style="display:inline;">
         @csrf
         <button type="submit" class="btn {{ $item->is_blocked ? 'btn-warning' : 'btn-success' }} btn-sm"
-            style="margin-left:20%">
+           >
             {{ $item->is_blocked ? 'Débloquer' : 'Bloquer' }}
         </button>
     </form>
 
                                             </td>
-
+@endif
                                     </tr>
                                 @endforeach
                             </tbody>

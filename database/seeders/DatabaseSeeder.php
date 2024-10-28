@@ -23,7 +23,12 @@ class DatabaseSeeder extends Seeder
              'password' => bcrypt('password')
          ]);
 
-        $this->call([
+  $this->call([
+            PermissionSeeder::class,
+            // Ajoute d'autres seeders ici si nécessaire
+        ]);
+
+ $this->call([
             AdminUserSeeder::class,
             // Ajoute d'autres seeders ici si nécessaire
         ]);
@@ -36,6 +41,8 @@ class DatabaseSeeder extends Seeder
             )
         )
         ->create();
+
+
 
 
 

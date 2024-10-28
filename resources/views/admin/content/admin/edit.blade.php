@@ -59,6 +59,49 @@
                             </div>
                         </div>
 
+                        <div class="col-6">
+                            <div class="form-group mg-b-0">
+                                <label class="form-label">Permissions : <span class="tx-danger">*</span></label>
+
+                                <div class="permissions-group">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="delete-user" name="permissions[]" value="supprimer_utilisateur" @if($admin->hasPermissionTo('supprimer_utilisateur')) checked @endif >
+                                        <label class="form-check-label" for="delete-user">Supprimer Utilisateur</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="block-user" name="permissions[]" value="bloquer_utilisateur" @if($admin->hasPermissionTo('bloquer_utilisateur')) checked @endif >
+                                        <label class="form-check-label" for="block-user">Bloquer Utilisateur</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="delete-annonce" name="permissions[]" value="supprimer_annonce"  @if($admin->hasPermissionTo('supprimer_annonce')) checked @endif>
+                                        <label class="form-check-label" for="delete-annonce">Supprimer Annonce</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="block-annonce" name="permissions[]" value="bloquer_annonce" @if($admin->hasPermissionTo('bloquer_annonce')) checked @endif>
+                                        <label class="form-check-label" for="block-annonce">Bloquer Annonce</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="change-annonce-state" name="permissions[]" value="changer_etat_annonce" @if($admin->hasPermissionTo('changer_etat_annonce')) checked @endif>
+                                        <label class="form-check-label" for="change-annonce-state">Changer État Annonce</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="create-admin" name="permissions[]" value="creer_admin" @if($admin->hasPermissionTo('creer_admin')) checked @endif>
+                                        <label class="form-check-label" for="create-admin">Créer Admin</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="delete-admin" name="permissions[]" value="supprimer_admin" @if($admin->hasPermissionTo('supprimer_admin')) checked @endif>
+                                        <label class="form-check-label" for="delete-admin">Supprimer Admin</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="edit-admin" name="permissions[]" value="modifier_admin" @if($admin->hasPermissionTo('modifier_admin')) checked @endif>
+                                        <label class="form-check-label" for="edit-admin">Modifier Admin</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
 
 
                         <script>

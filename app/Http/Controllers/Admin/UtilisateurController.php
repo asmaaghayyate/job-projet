@@ -1,18 +1,42 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\Controller;
 use App\Models\Annance;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 class UtilisateurController extends Controller
 {
     //
 
 
     public function index(){
+
+
+        // $permissions = Permission::where('guard_name', 'admin')->get();
+        // dd($permissions);
+
+
+        // $superAdminRole = Role::findByName('super_admin', 'admin');
+        // $permissions = $superAdminRole->permissions; // Récupérer toutes les permissions
+        // dd($permissions);
+        // $user = Auth::guard('admin')->user(); // Récupère l'utilisateur authentifié
+
+        // if ($user) {
+        //     try {
+        //         $permissions = $user->getAllPermissions(); // Assure-toi que le modèle utilise le trait HasRoles
+        //         dd($permissions);
+        //     } catch (\Exception $e) {
+        //         dd($e->getMessage());
+        //     }
+        // } else {
+        //     dd('Aucun utilisateur authentifié.');
+        // }
+
+
 
         $lesutilisateurs=User::latest()->paginate(10);
         return view('admin.content.utilisateur.index',compact('lesutilisateurs'));

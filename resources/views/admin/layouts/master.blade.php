@@ -32,6 +32,7 @@
 
     <!-- Maps css -->
     <link href="{{ asset('assets2/plugins/jqvmap/jqvmap.min.css') }} " rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!-- style css -->
     <link href="{{ asset('assets2/css/style.css') }} " rel="stylesheet">
@@ -46,8 +47,12 @@
 
 </head>
 
-
-
+<style>
+    .custom-warning {
+        background-color: #ffeeba; /* Couleur de warning */
+        color: #856404; /* Couleur du texte */
+    }
+</style>
 <body class="main-body app sidebar-mini sidenav-toggled">
 
     <!-- Loader -->
