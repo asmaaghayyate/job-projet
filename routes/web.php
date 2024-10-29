@@ -90,19 +90,15 @@ Route::prefix('admin')->middleware(['auth.admin'])->group(function () {
 
 
 
-
-
 Route::get('/', function () {
     $toutlesemploiscount=Annance::where('etat','publiée')
     ->where('is_blocked','false')
     ->count();
     $dernieresannances = Annance::where('etat','publiée')
-    ->where('is_blocked','false')
-    ->latest()->take(5)->get();
+    ->where('is_blocked','false')->paginate(7);
 
  return view('index',compact('toutlesemploiscount','dernieresannances'));
     })->name('index');
-
 
 
 Route::get('/login', function () {

@@ -61,25 +61,15 @@ Nous avons plus de   <strong>{{ $toutlesemploiscount }} </strong> offres d'emplo
     <li><a href="#"><i class="fa fa-camera"></i> Photographe</a></li>
     <li><a href="#"><i class="fas fa-pencil-alt"></i> Rédaction et Marketing</a></li>
     <li><a href="#"><i class="fa fa-file-alt"></i> Rédacteurs</a></li>
-    {{-- <li><a href="#"><i class="fa fa-bullhorn"></i> Spécialistes en Marketing Digital</a></li>
-    <li><a href="#"><i class="fa fa-briefcase"></i> Services aux Entreprises</a></li>
-    <li><a href="#"><i class="fas fa-user-tie"></i> Assistants Virtuels</a></li>
-    <li><a href="#"><i class="fas fa-headset"></i> Agents de Service Client</a></li>
-    <li><a href="#"><i class="fa fa-chart-line"></i> Finance et Comptabilité</a></li>
-    <li><a href="#"><i class="fa fa-calculator"></i> Comptables</a></li>
-    <li><a href="#"><i class="fa fa-shopping-cart"></i> Vente et Commercial</a></li>
-    <li><a href="#"><i class="fas fa-user-tie"></i> Représentants Commerciaux</a></li>
-    <li><a href="#"><i class="fas fa-chalkboard-teacher"></i> Éducation et Formation</a></li>
-    <li><a href="#"><i class="fas fa-book-open"></i> Formateurs</a></li>
-    <li><a href="#"><i class="fa fa-heartbeat"></i> Santé et Bien-être</a></li>
-    <li><a href="#"><i class="fas fa-apple-alt"></i> Nutritionnistes</a></li> --}}
+
 
 		</ul>
 
 		<div class="clearfix"></div>
 		<div class="margin-top-30"></div>
 
-	<a href="javascript:void(0);" class="button centered" id="browse-categories">Parcourir les catégories</a>
+	<a href="javascript:void(0);" class="button centered" id="browse-categories">
+        <i class="fa fa-arrow-down" id="category-icon"></i>Parcourir les catégories</a>
 <br>
 <div class="categories" style="display: none;">
     <!-- Contenu des catégories ici -->
@@ -106,6 +96,14 @@ Nous avons plus de   <strong>{{ $toutlesemploiscount }} </strong> offres d'emplo
 $(document).ready(function() {
     $('#browse-categories').click(function() {
         $('.categories').toggle();
+
+        var icon = $('#category-icon');
+        if (icon.hasClass('fa-arrow-down')) {
+            icon.removeClass('fa-arrow-down').addClass('fa-arrow-up');
+        } else {
+            icon.removeClass('fa-arrow-up').addClass('fa-arrow-down');
+        }
+
     });
 });
 </script>
@@ -171,7 +169,7 @@ $(document).ready(function() {
 
 		</ul>
 
-		<a href="browse-jobs.html" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
+	{{$dernieresannances->links()}}
 		<div class="margin-bottom-55"></div>
 	</div>
 
