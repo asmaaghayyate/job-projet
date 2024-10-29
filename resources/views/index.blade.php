@@ -166,11 +166,11 @@ $(document).ready(function() {
 			</li>
 @endforeach
 
-
+{{$dernieresannances->links()}}
 		</ul>
 
-	{{$dernieresannances->links()}}
-		<div class="margin-bottom-55"></div>
+
+
 	</div>
 
 
