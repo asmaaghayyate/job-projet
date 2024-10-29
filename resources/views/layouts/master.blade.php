@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 <!-- Optionnel : JavaScript de Bootstrap -->
@@ -30,6 +31,15 @@
 ================================================== -->
 <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/css/colors/green.css')}}" id="colors">
+
+
+{{-- <link rel="stylesheet" href="{{ asset('assets2/css/style.css') }} "> --}}
+
+
+
+
+
+
 
 
 
@@ -304,7 +314,8 @@ color: rgb(89, 89, 89);
 
         <!-- Logo -->
         <div id="logo">
-            <h1><a href="{{route('index')}}"><img src="{{ asset('assets/images/logo.png')}}" alt="Work Scout" /></a></h1>
+            <h1><a href="{{route('index')}}">
+                <img src="{{ asset('assets/images/logo.png')}}" alt="Work Scout" /></a></h1>
         </div>
 
         <!-- Menu -->
@@ -312,11 +323,12 @@ color: rgb(89, 89, 89);
 
             <ul id="responsive">
 
-                <li><a href="{{ route('index') }}">{{ __('navbar.home') }}</a></li>
+                <li>
+                    <a href="{{ route('index') }}">{{ __('navbar.home') }}</a></li>
                 </li>
 
                 <li>
-                    <a href="#">Pages</a>
+                                           <a href="#">Pages</a>
 
                     @if(Auth::check())
                     <ul>
@@ -328,9 +340,6 @@ color: rgb(89, 89, 89);
 
 
 
-
-
-
                 <li>
 
                 <a href="{{route('publierannance')}}" id="current">Publier une offre d'emploi</a>
@@ -338,26 +347,19 @@ color: rgb(89, 89, 89);
                 </li>
 
 
-
-                  {{-- <a href="{{route('masteremployeur')}}" id="current">Employeurs</a> --}}
-
-                    {{-- <ul>
-                        <li><a href="{{route('publierannance')}}">Publier Annance</a></li>
-                        <li><a href="browse-jobs.html">Ameliorer Mon Profile</a></li>
-
-                    </ul> --}}
-
-
-
             </ul>
 
 
+
             <ul class="float-right">
+
                 @if(!Auth::check())
                 <li><a href="{{route('formregister')}}"><i class="fa fa-user"></i>S'inscrire</a></li>
                 <li><a href="{{route('formlogin')}}"><i class="fa fa-lock"></i>Se connecter</a></li>
                 @endif
-                @if(Auth::check())
+
+
+                {{-- @if(Auth::check())
                 <li>
                  <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 </i> Deconnexion</a>
@@ -369,14 +371,35 @@ color: rgb(89, 89, 89);
 
                 </li>
                 @endif
+ --}}
+    @if(Auth::check())
+ <li>
+<a>
+    <div class="notification-icon">
+        <i class="fas fa-bell"></i>
 
-
+    </div>
+</a>
+ </li>
+   @endif
 
 
                 @if(Auth::check())
                 <li><a href=""><i class="fa fa-user"></i> {{auth()->user()->name}}</a>
                     <ul>
                         <li><a href="{{route('monprofile')}}"><i class="fa fa-user"></i>Profile</a></li>
+
+
+                        <li>
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out-alt"></i> Deconnexion</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+
+                                </form>
+                        </li>
+
+
                     </ul>
                 </li>
                 @endif
