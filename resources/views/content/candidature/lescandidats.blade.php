@@ -21,21 +21,21 @@
 
 
 
-@if ($candidatures->count()==0)
+  @if ($candidatures->count()==0)
 <h3><p>Vous n'avez aucune candidatures pour l'instant.</p></h3>
 @else
 
 
-	<table class="manage-table resumes responsive-table">
+	<table class="manage-table resumes responsive-table" >
 
 			<tr>
                 <th>Titre Annance</th>
 				<th><i class="fa fa-user"></i> Name</th>
-				<th><i class="fa fa-file-text"></i> Email</th>
-				<th><i class="fa fa-map-marker"></i> Phone</th>
-				<th><i class="fa fa-calendar"></i> CV</th>
-                <th><i class="fa fa-calendar"></i> Niveau d'etude</th>
-                <th><i class="fa fa-calendar"></i> Annees d'experiences</th>
+				<th><i class="fa fa-envelope"></i> Email</th>
+				<th><i class="fa fa-phone"></i> Phone</th>
+				<th><i class="fa fa-file"></i> CV</th>
+                <th><i class="fa fa-graduation-cap"></i> Niveau d'etude</th>
+                <th><i class="fa fa-briefcase"></i> Annees d'exper</th>
 				<th>Motivation</th>
                 <th>Etat</th>
                 <th>Changer Etat</th>
@@ -51,7 +51,7 @@
     {{ $candidature->annance->titre }}</a>
     </td>
                       <td>{{ $candidature->user->name }}</td>
-                        <td>{{$candidature->user->email}}</td>
+                        <td style="padding: 5px 10px;">{{$candidature->user->email}}</td>
                         <td>{{$candidature->user->phone}}</td>
                         <td><a href="{{ asset('storage/' .$candidature->user->cv) }}" target="_blank">
 
@@ -61,7 +61,8 @@
                             </a></td>
                         <td>{{$candidature->user->niveau_etude}}</td>
                         <td>{{$candidature->user->annees_experiences}}</td>
-                        <td>{!!$candidature->lettre_motivation!!}</td>
+                        <td> {!! Str::limit($candidature->lettre_motivation, 15, '...')!!}
+                        </td>
                         <td>
                         <span class="badge badge-{{ \App\Enums\EtatEnumCandidature::getColor($candidature->etat) }}">
                             {{ $candidature->etat }}
@@ -92,12 +93,6 @@
 
 
 @endif
-
-
-
-
-
-
 </div>
 
 

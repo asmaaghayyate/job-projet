@@ -40,6 +40,7 @@
 
 </head>
 <style>
+
     .icon-color {
         color: #53b427; /* Change ici pour la couleur souhaitée */
         font-size: 24px; /* Ajuste la taille si nécessaire */
@@ -49,6 +50,26 @@
 
 <style>
 
+
+.manage-table td {
+   /* Limiter la largeur des cellules */
+   /* Empêche le texte de s'enrouler */
+     /* Cache le texte qui dépasse */
+  /* Affiche "..." pour le texte trop long */
+    padding: 5px 10px; /* Ajouter du padding pour espacer le texte */
+    margin: 0; /* Pas de marge externe pour les cellules */
+    font-size: 0.85em; /* Réduire légèrement la taille de la police */
+}
+
+.manage-table th {
+   /* Limiter la largeur des cellules */
+   /* Empêche le texte de s'enrouler */
+     /* Cache le texte qui dépasse */
+  /* Affiche "..." pour le texte trop long */
+    padding: 5px 10px; /* Ajouter du padding pour espacer le texte */
+    margin: 0; /* Pas de marge externe pour les cellules */
+    font-size: 0.85em; /* Réduire légèrement la taille de la police */
+}
 
 .btn-google {
     display: inline-flex;
@@ -276,6 +297,9 @@ color: rgb(89, 89, 89);
 ================================================== -->
 <header style="">
 <div class="container">
+
+
+
     <div class="sixteen columns">
 
         <!-- Logo -->
@@ -285,12 +309,15 @@ color: rgb(89, 89, 89);
 
         <!-- Menu -->
         <nav id="navigation" class="menu">
+
             <ul id="responsive">
 
                 <li><a href="{{ route('index') }}">{{ __('navbar.home') }}</a></li>
                 </li>
 
-                <li><a href="#">Pages</a>
+                <li>
+                    <a href="#">Pages</a>
+
                     @if(Auth::check())
                     <ul>
                         <li><a href="{{route('lescandidatures')}}">Les candidatures</a></li>
@@ -300,9 +327,18 @@ color: rgb(89, 89, 89);
                 </li>
 
 
-                <li><a href="{{route('publierannance')}}" id="current">Publier une offre d'emploi</a>
+
+
+
 
                 <li>
+
+                <a href="{{route('publierannance')}}" id="current">Publier une offre d'emploi</a>
+
+                </li>
+
+
+
                   {{-- <a href="{{route('masteremployeur')}}" id="current">Employeurs</a> --}}
 
                     {{-- <ul>
@@ -310,7 +346,7 @@ color: rgb(89, 89, 89);
                         <li><a href="browse-jobs.html">Ameliorer Mon Profile</a></li>
 
                     </ul> --}}
-                </li>
+
 
 
             </ul>

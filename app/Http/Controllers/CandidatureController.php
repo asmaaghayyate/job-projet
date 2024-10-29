@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CandidatureStatusMail;
 use App\Models\Annance;
 use App\Models\Candidature;
 use Illuminate\Http\Request;
@@ -42,6 +43,12 @@ public function updatetatcandidature(Request $request,Candidature $candidature){
  ]);
       $candidature->etat = $request->etat;
       $candidature->save();
+
+$emailemployeur=$candidature->annance->user->email;
+\Mail::to($candidature->user->email)
+->send(new CandidatureStatusMail($candidature->user, $candidature->etat,$emailemployeur));
+
+
 
  return redirect()->route('lescandidatures')
  ->with('success', 'L\'état de la candidature a été mis à jour avec succès.');
