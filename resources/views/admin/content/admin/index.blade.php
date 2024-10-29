@@ -71,7 +71,7 @@
                                           <td>
 
 
-                                            @if($item->getAllPermissions()->isEmpty())
+                                        @if($item->getAllPermissions()->isEmpty())
                                             Aucune permission attribuée.
                                         @else
                                             @foreach($item->getAllPermissions() as $index => $permission)
@@ -81,8 +81,8 @@
                                     {{ $permission->name }}
 
                                 </span>
-                                 @if (($index + 1) % 3 == 0)
-                                  <br>
+                                 @if (($index + 1) % 4 == 0)
+                                  <br><br>
                                  @endif
                                             @endforeach
                                         @endif
