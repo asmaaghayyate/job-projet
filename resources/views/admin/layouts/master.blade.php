@@ -90,7 +90,7 @@
                         </div>
                         <div class="main-header-center ml-3 d-sm-none d-md-none d-lg-block">
 
-                        @isset($lesannances)
+
                         <form action="{{route('admin.annonce.titre')}}" method="post">
                             @csrf
                             <input class="form-control" placeholder="Recherche par titre..."
@@ -99,12 +99,8 @@
                                 <i class="fas fa-search d-none d-md-block">
                                     </i></button>
                          </form>
-                         @else
-                         <input class="form-control" placeholder="Search for anything..." type="search">
-                         <button  class="btn">
-                             <i class="fas fa-search d-none d-md-block">
-                                 </i></button>
-                        @endisset
+
+                        
 
 
 
@@ -149,7 +145,7 @@
                                         @csrf
 
                                         <button class="dropdown-item"><i class="bx bx-log-out"></i>
-                                            Sign Out</button>
+                                            Deconnecter</button>
 
                                     </form>
                                 </div>

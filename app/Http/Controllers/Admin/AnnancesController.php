@@ -12,6 +12,7 @@ class AnnancesController extends Controller
     public function index(){
 
         $lesannances=Annance::latest()->paginate(10);
+
         return view('admin.content.annance.index',compact('lesannances'));
     }
 
@@ -63,9 +64,9 @@ class AnnancesController extends Controller
     $annance->is_blocked = !$annance->is_blocked;
     $annance->save();
 
-    // $annances=Annance::where('id',$annance->id);
+    $annances=Annance::where('id',$annance->id);
 
-    // $annances->update(['etat'=>'fermée']);
+    $annances->update(['etat'=>'fermée']);
 
 
     return redirect()->back()

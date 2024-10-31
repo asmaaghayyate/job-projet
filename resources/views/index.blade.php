@@ -10,7 +10,7 @@
 @section('content')
 
 
-<div id="banner" style="background: url(images/banner-home-01.jpg)">
+<div id="banner" style="background: url(assets/images/banner-home-01.jpg)">
 	<div class="container">
 		<div class="sixteen columns">
 

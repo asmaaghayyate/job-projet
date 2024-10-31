@@ -4,6 +4,6 @@ return [
 
 
 
-    'home' => "page d'accueil",
+    'home' => "accueil",
 
 ];

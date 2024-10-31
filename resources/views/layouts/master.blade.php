@@ -31,6 +31,7 @@
 ================================================== -->
 <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/css/colors/green.css')}}" id="colors">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
 {{-- <link rel="stylesheet" href="{{ asset('assets2/css/style.css') }} "> --}}
@@ -324,20 +325,27 @@ color: rgb(89, 89, 89);
             <ul id="responsive">
 
                 <li>
-                    <a href="{{ route('index') }}">{{ __('navbar.home') }}</a></li>
+
+                    <a href="{{ route('index') }}">
+                        <i class="fas fa-home" style="font-size: 20px"></i>
+                        &nbsp;{{ __('navbar.home') }}</a>
                 </li>
 
-                <li>
-                                           <a href="#">Pages</a>
 
-                    @if(Auth::check())
+ @if(Auth::check())
+                <li>
+
+                      <a href="#">Employeurs</a>
+
+
                     <ul>
                         <li><a href="{{route('lescandidatures')}}">Les candidatures</a></li>
 
                     </ul>
-                     @endif
-                </li>
 
+
+                </li>
+  @endif
 
 
                 <li>
@@ -484,7 +492,8 @@ color: rgb(89, 89, 89);
         <div class="three columns">
             <h4>Annonce</h4>
             <ul class="footer-links">
-                <li><a href="#">Catégories d'Emplois </a></li>
+                <li><a href="#">Emplois par Categorie </a></li>
+                <li><a href="#">Emplois par ville </a></li>
                 <li><a href="#">Offres d'Emploi Populaires</a></li>
 
             </ul>
