@@ -121,11 +121,29 @@
             </div><!-- col-6 -->
 
 
-            
+
             <div class="col-md-6">
 
-                <div class="card mg-b-20">
-                    <canvas id="myLineChart" width="820" height="600"></canvas>
+                <div class="card mg-b-20" >
+
+
+                    <div class="year-selector">
+
+                            <select  class="" id="yearSelector" onchange="updateChart(this.value)">
+
+                                  <option value="">Sélectionnez une année</option>
+                                    <script>
+                                      const currentYear = new Date().getFullYear();
+                                      for (let year = currentYear; year >= 2010; year--) {
+                                          document.write(`<option value="${year}">${year}</option>`);
+                                      }
+                                  </script>
+
+                              </select>
+                            </div>
+                  <div>
+                    <canvas id="myLineChart" width="880" height="600"></canvas>
+
                 </div>
 
 
@@ -137,14 +155,14 @@
 
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script>
+            {{-- <script>
                 const ctx = document.getElementById('myLineChart').getContext('2d');
                 const myLineChart = new Chart(ctx, {
                     type: 'line',
                     data: {
                         labels: {!! json_encode($mois) !!}, // Les mois
                         datasets: [{
-                            label: 'Annonces Acceptées',
+                            label: 'Annonces publiées',
                             data: {!! json_encode($totaux) !!}, // Totaux par mois
                             borderColor: 'rgba(54, 162, 235, 1)',
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -170,7 +188,89 @@
                         }
                     }
                 });
+            </script> --}}
+            {{-- Route::get('/annonces/{year}', [YourController::class, 'getAnnoncesByYear']); --}}
+
+
+            <script>
+                let myLineChart;
+
+                function updateChart(year) {
+                    if (!year) {
+                        return; // Ne rien faire si aucune année n'est sélectionnée
+                    }
+
+                    fetch(`/admin/data/${year}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok ' + response.statusText);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            const ctx = document.getElementById('myLineChart').getContext('2d');
+
+                            // Si le graphique existe déjà, le détruire avant de le recréer
+                            if (myLineChart) {
+                                myLineChart.destroy();
+                            }
+
+                            myLineChart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: data.mois, // Les mois
+                                    datasets: [{
+                                        label: 'Évolution des Annonces publiées au Fil du Temps',
+                                        data: data.totaux, // Totaux par mois
+                                        borderColor: 'rgba(54, 162, 235, 1)',
+                                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                        borderWidth: 2,
+                                        fill: true // Remplir la zone sous la courbe
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    plugins: {
+                                        legend: {
+                                            position: 'top',
+                                        },
+                                        title: {
+                                display: true,
+                                text: 'Évolution des Annonces publiées au Fil du Temps'
+                            }
+                                    },
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Il y a eu un problème avec la requête Fetch:', error);
+                        });
+                }
+
+                // Appel initial pour charger les données de l'année par défaut si nécessaire
+                document.addEventListener('DOMContentLoaded', function() {
+                    const defaultYear = '2024'; // Mettez ici l'année par défaut
+                    updateChart(defaultYear);
+                });
             </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

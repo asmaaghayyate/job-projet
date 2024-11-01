@@ -38,7 +38,7 @@ Route::post('logout/admin',  [AuthAdminController::class,"logout"])->name('logou
 
 
 
-Route::get('/admin/index', function () {
+Route::get('/admin/index/{year}', function ($year) {
 $utilisateurcount=User::all()->count();
 $annancespublieecount=Annance::where('etat','publiée')
 ->where('is_blocked','false')->count();
@@ -48,25 +48,60 @@ $annancesfermeecount=Annance::where('etat','fermée')
 ->where('is_blocked','false')->count();
 
 
+// $data = Annance::select(DB::raw('MONTH(created_at) as month'), DB::raw('count(*) as total'))
+// ->where('etat', 'publiée')
+// ->whereYear('created_at', date('Y'))
+// ->groupBy('month')
+// ->orderBy('month')
+// ->get();
+
+// // Préparer les données pour le graphique
+// $mois = $data->pluck('month')->map(function ($month) {
+//     return date('F', mktime(0, 0, 0, $month, 1)); // Convertir le numéro du mois en nom
+// });
+// $totaux = $data->pluck('total');
 
 $data = Annance::select(DB::raw('MONTH(created_at) as month'), DB::raw('count(*) as total'))
 ->where('etat', 'publiée')
-->whereYear('created_at', date('Y'))
+->whereYear('created_at', $year)
 ->groupBy('month')
 ->orderBy('month')
 ->get();
 
-// Préparer les données pour le graphique
 $mois = $data->pluck('month')->map(function ($month) {
-    return date('F', mktime(0, 0, 0, $month, 1)); // Convertir le numéro du mois en nom
+return date('F', mktime(0, 0, 0, $month, 1));
 });
-$totaux = $data->pluck('total');
 
+$totaux = $data->pluck('total');
+//dd($totaux);
 
     return view('admin.index',compact('utilisateurcount',
     'annancespublieecount','annancesenattentecount','annancesfermeecount'
    ,'mois', 'totaux'));
+
+
 })->name("admin.dashboard")->middleware(['auth.admin']);
+
+
+Route::get('/admin/data/{year}', function ($year) {
+    $data = Annance::select(DB::raw('MONTH(created_at) as month'), DB::raw('count(*) as total'))
+        ->where('etat', 'publiée')
+        ->whereYear('created_at', $year)
+        ->groupBy('month')
+        ->orderBy('month')
+        ->get();
+
+    $mois = $data->pluck('month')->map(function ($month) {
+        return date('F', mktime(0, 0, 0, $month, 1));
+    });
+
+    $totaux = $data->pluck('total');
+
+    return response()->json([
+        'mois' => $mois,
+        'totaux' => $totaux,
+    ]);
+});
 
 
 

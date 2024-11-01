@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
         // }
 
         $guards = empty($guards) ? [null] : $guards;
-
+        $currentYear = date('Y');
         // Vérifie chaque guard passé en paramètre
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check() ) {
@@ -33,7 +33,7 @@ class RedirectIfAuthenticated
                 // en fonction du guard authentifié
                 if ($guard === 'admin' ) {
                     // Si l'utilisateur est authentifié en tant qu'admin, on redirige vers le tableau de bord admin
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->route('admin.dashboard',$currentYear);
                 } else {
                     // Si l'utilisateur est authentifié via un autre guard (web par exemple)
                     return redirect(RouteServiceProvider::HOME);

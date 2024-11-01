@@ -47,6 +47,42 @@
 
 </head>
 
+
+
+<style>
+
+    .year-selector {
+        display: inline-block;
+        position: relative;
+    }
+    .year-selector select {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        appearance: none; /* Supprime le style par défaut */
+        background: #f8f8f8 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
+        background-size: 12px;
+    }
+    .year-selector select:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+    .year-selector::after {
+        content: '';
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px;
+        height: 12px;
+        background: #007bff;
+        border-radius: 50%;
+    }
+</style>
+
+
+
 <style>
     .custom-warning {
         background-color: #ffeeba; /* Couleur de warning */
@@ -100,7 +136,7 @@
                                     </i></button>
                          </form>
 
-                        
+
 
 
 

@@ -167,6 +167,9 @@ $(document).ready(function() {
 @endforeach
 
 {{$dernieresannances->links()}}
+
+
+
 		</ul>
 
 

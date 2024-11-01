@@ -17,13 +17,13 @@ class AuthAdminController extends Controller
             'email' => 'required|email|exists:admins,email',
             'password' => 'required|min:2',
         ]);
-
+        $currentYear = date('Y');
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('admin')->attempt($credentials)) {
             //dd($credentials);
 
-            return redirect()->intended('/admin/index');
+            return redirect()->intended('/admin/index/'.$currentYear);
         } else {
             return redirect()->back()->with([
                 'error' => 'Ces informations d\'identification ne correspondent pas à nos dossiers.',
