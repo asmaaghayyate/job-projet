@@ -150,10 +150,12 @@ Route::get('/', function () {
     ->where('is_blocked','false')
     ->count();
     $dernieresannances = Annance::where('etat','publiée')
+    ->orderBy('created_at', 'desc')
     ->where('is_blocked','false')->paginate(7);
 
  return view('index',compact('toutlesemploiscount','dernieresannances'));
     })->name('index');
+
 
 
 Route::get('/login', function () {
@@ -176,9 +178,6 @@ Route::post('/register', 'register')->name('register');
 
 
 Route::post('logout', [AuthController::class,'logout'])->name('logout');
-
-
-
 
 
 

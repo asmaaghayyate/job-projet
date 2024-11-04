@@ -2,18 +2,16 @@
 
 
 @section('content')
-    
+
 <div id="titlebar" class="single">
 	<div class="container">
 
 		<div class="sixteen columns">
-			<h2>Mon Compte Candidat</h2>
+			<h2>Créer un compte</h2>
 			<nav id="breadcrumbs">
 				<ul>
-					<li>You are here:</li>
-					<li><a href="#">Home</a></li>
-					<li>My Account</li>
-				</ul>
+		<li style="color: #53b427;"><strong>Les rubriques indiquees par * sont obligatoires.</li>
+      </ul>
 			</nav>
 		</div>
 
@@ -28,11 +26,11 @@
 <div class="container">
 
 	<div class="my-account">
-		
+
 		<div class="tabs-container">
-						
+
 			<!-- Login -->
-			
+
 				<!-- Register -->
 				<div class="tab-content" id="tab2" style="display: none;">
 					@if (session()->has('success'))
@@ -40,7 +38,7 @@
 						{{ session()->get('success') }}
 					</div>
 					@endif
-										
+
 							@if ($errors->any())
 					<div class="alert alert-danger">
 						<ul>
@@ -50,39 +48,40 @@
 						</ul>
 					</div>
 					@endif
-					<h3 class="margin-bottom-10 margin-top-10">Register</h3>
 
-					<form class="register" action="{{route('register')}}" method="post" >				
+
+					<form class="register" action="{{route('register')}}" method="post" >
 					@csrf
 
-					<input type="hidden" name="role" id="role" value="candidat"> 	
+					<input type="hidden" name="role" id="role" value="candidat">
 						<p class="form-row form-row-wide">
-						<label for="reg_email">Nom et Prenom:</label>
+						<label for="reg_email">Nom et Prenom:<span style="color: red">*</span></label>
 						<input type="text" class="input-text" name="name" id="name" value="" />
 						</p>
-							 
+
 						<p class="form-row form-row-wide">
-							<label for="reg_email">Email Address:</label>
+							<label for="reg_email">Email Address:<span style="color: red">*</span></label>
 							<input type="email" class="input-text" name="email" id="email" value="" />
-							
+
 						</p>
 
-						
+
 						<p class="form-row form-row-wide">
-							<label for="reg_password">Mot de Passe:</label>
+							<label for="reg_password">Mot de Passe:<span style="color: red">*</span></label>
 							<input type="password" class="input-text" name="password" id="password" />
 						</p>
 
 						<p class="form-row form-row-wide">
-							<label for="reg_password2">Confirmez le mot de passe:</label>
-							<input type="password" class="input-text" name="password_confirmation" id="password_confirmation" />
+							<label for="reg_password2">Confirmez le mot de passe:<span style="color: red">*</span></label>
+							<input type="password" class="input-text" name="password_confirmation"
+                             id="password_confirmation" />
 						</p>
 
-							
+
 						<p class="form-row">
-							<input type="submit" class="button" name="register" value="Register" />
+							<input type="submit" class="button" name="register" value="je m'inscrire" />
 						</p>
-						
+
 					</form>
 				</div>
 		</div>

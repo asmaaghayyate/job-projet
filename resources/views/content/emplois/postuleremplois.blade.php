@@ -9,10 +9,11 @@
 		<div class="ten columns">
 
 			<h2><strong>Postuler pour </strong> </h2>
+            <h2> {{$annance->titre}}</h2>
 		</div>
 
 	</div>
-    <h2> {{$annance->titre}}</h2>
+
 </div>
 
 

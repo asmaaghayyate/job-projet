@@ -36,6 +36,7 @@
 
 {{-- <link rel="stylesheet" href="{{ asset('assets2/css/style.css') }} "> --}}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 
 
@@ -296,6 +297,11 @@ color: rgb(89, 89, 89);
     grid-template-columns: 48rem auto;
     grid-template-areas: "topAlert ." "aboveHeader ." "header topSidebar" "content sidebar" "errorSummary sidebar" "footer sidebar" "underFooter sidebar";
 }
+
+
+
+
+
     </style>
 
 <body>
@@ -306,10 +312,8 @@ color: rgb(89, 89, 89);
 
 <!-- Header
 ================================================== -->
-<header style="">
-<div class="container">
-
-
+<header>
+    <div class="container">
 
     <div class="sixteen columns">
 
@@ -320,7 +324,7 @@ color: rgb(89, 89, 89);
         </div>
 
         <!-- Menu -->
-        <nav id="navigation" class="menu">
+ <nav id="navigation" class="menu">
 
             <ul id="responsive">
 
@@ -332,7 +336,7 @@ color: rgb(89, 89, 89);
                 </li>
 
 
- @if(Auth::check())
+                 @if(Auth::check())
                 <li>
 
                       <a href="#">Employeurs</a>
@@ -345,7 +349,7 @@ color: rgb(89, 89, 89);
 
 
                 </li>
-  @endif
+               @endif
 
 
                 <li>
@@ -358,7 +362,7 @@ color: rgb(89, 89, 89);
             </ul>
 
 
-
+  
             <ul class="float-right">
 
                 @if(!Auth::check())
@@ -381,15 +385,16 @@ color: rgb(89, 89, 89);
                 @endif
  --}}
     @if(Auth::check())
- <li>
-<a>
-    <div class="notification-icon">
-        <i class="fas fa-bell"></i>
+    <li>
+        <a>
+            <div class="notification-icon">
+                <i class="fas fa-bell"></i>
 
-    </div>
-</a>
- </li>
+            </div>
+        </a>
+    </li>
    @endif
+
 
 
                 @if(Auth::check())
@@ -435,7 +440,7 @@ color: rgb(89, 89, 89);
 ================================================== -->
 
 <!-- Categories -->
-<div class="container">
+<div class="container-fluid">
 
     @yield('content')
 </div>

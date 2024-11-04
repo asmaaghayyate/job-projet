@@ -47,8 +47,8 @@ Nous avons plus de   <strong>{{ $toutlesemploiscount }} </strong> offres d'emplo
 
 <!-- Categories -->
 
-
-	<div class="sixteen columns">
+<div class="container">
+<div class="sixteen columns">
 		<h3 class="margin-bottom-25">Catégories populaires</h3>
 		<ul id="popular-categories">
 
@@ -118,25 +118,20 @@ $(document).ready(function() {
 	<!-- Recent Jobs -->
 
 
-
 	<div class="padding-right">
+
 		<h3 class="margin-bottom-25">Emplois récents</h3>
 
-		<ul class="job-list">
+	    <ul class="job-list">
+           @foreach ($dernieresannances as $dernieresannance)
+           <li class="">
+          <a href="{{route('showemplois',$dernieresannance->slug)}}">
 
- @foreach ($dernieresannances as $dernieresannance)
- <li class="">
-    <a href="{{route('showemplois',$dernieresannance->slug)}}">
-
-
-
-      @if ($dernieresannance->entreprise->image)
-     <img src="{{ asset('storage/' . $dernieresannance->entreprise->image) }}" alt="Image de l'entreprise">
+         @if ($dernieresannance->entreprise->image)
+           <img src="{{ asset('storage/' . $dernieresannance->entreprise->image) }}" alt="Image de l'entreprise" >
         @else
-    <img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">
-        @endif
-
-
+          <img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">
+          @endif
 
 				<div class="job-list-content">
 
@@ -161,26 +156,19 @@ $(document).ready(function() {
 					</div>
                     <p> {!! Str::limit($dernieresannance->description, 170, '...')  !!}</p>
 				</div>
-	</a>
+	            </a>
 				<div class="clearfix"></div>
 			</li>
-@endforeach
+              @endforeach
 
-{{$dernieresannances->links()}}
-
-
+            {{$dernieresannances->links()}}
 
 		</ul>
-
-
-
-	</div>
+</div>
 
 
 	<!-- Job Spotlight -->
 
 </div>
-
-
 
 @endsection
