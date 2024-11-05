@@ -108,15 +108,16 @@ Route::get('/admin/data/{year}', function ($year) {
 
 
 Route::controller(AnnancesController::class)->middleware(['auth.admin'])->group(function () {
-Route::get('/admin/annances','index')->name('admin.lesannances');
+Route::get('/admin/annonces','index')->name('admin.lesannances');
 
-Route::get('/admin/annances/en-attente','indexenattente')->name('admin.lesannances.enattente');
-Route::get('/admin/annances/publiee','indexpubliee')->name('admin.lesannances.publiee');
-Route::get('/admin/annances/fermee','indexfermee')->name('admin.lesannances.fermee');
+Route::get('/admin/annonces/en-attente','indexenattente')->name('admin.lesannances.enattente');
+Route::get('/admin/annonces/publiee','indexpubliee')->name('admin.lesannances.publiee');
+Route::get('/admin/annonces/fermee','indexfermee')->name('admin.lesannances.fermee');
 
 Route::match(['get', 'post'],'/admin/annance/titre','titre')->name('admin.annonce.titre');
 
-Route::delete('/admin/annances/destroy/{annance}','destroy')->name('admin.annonce.destroy');
+Route::delete('/admin/annonces/destroy/{annance}','destroy')->name('admin.annonce.destroy');
+Route::get('/admin/annonces/show/{annance}','show')->name('admin.annonce.show');
 Route::post('/admin/updatetat/{annance}','updatetat')->name('updatetat');
 
 Route::post('/admin/annonce/{annance}/toggle-block',
@@ -188,7 +189,7 @@ Route::controller(EmploisController::class)->group(function () {
 //Route::post('/emplois','filterEmplois')->name('filterEmplois');
 Route::match(['get', 'post'], '/emplois',  'filterEmplois')->name('filterEmplois');
 
-Route::get('/annonce/{slug}','showemplois')->name('showemplois');
+Route::get('/annonce/{annance}/{slug}','showemplois')->name('showemplois');
 
 });
 

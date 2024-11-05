@@ -109,9 +109,9 @@ public function filterEmplois(Request $request) {
 
 
 
-public function showemplois($slug){
-
-    $annance = Annance::where('slug', $slug)->firstOrFail();
+public function showemplois($annance,$slug){
+//dd($annance);
+    $annance = Annance::where('id', $annance)->firstOrFail();
 return view('content.emplois.showemplois',compact('annance'));
 
 }

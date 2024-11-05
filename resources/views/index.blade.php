@@ -125,7 +125,7 @@ $(document).ready(function() {
 	    <ul class="job-list">
            @foreach ($dernieresannances as $dernieresannance)
            <li class="">
-          <a href="{{route('showemplois',$dernieresannance->slug)}}">
+          <a href="{{route('showemplois',['annance' => $dernieresannance->id, 'slug' => $dernieresannance->slug])}}">
 
          @if ($dernieresannance->entreprise->image)
            <img src="{{ asset('storage/' . $dernieresannance->entreprise->image) }}" alt="Image de l'entreprise" >

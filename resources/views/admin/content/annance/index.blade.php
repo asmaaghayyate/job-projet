@@ -32,11 +32,14 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         @php
-                        $columns = ['Employeur', 'Entreprise', 'Titre de l\'annonce', 'Type d\'emploi', 'Date de création', 'Description', 'Ville', 'Catégorie', 'État'];
+                        $columns = ['Employeur', 'Entreprise', 'Titre de l\'annonce',
+                        'Type d\'emploi', 'Date de création', 'Description', 'Ville',
+                         'Catégorie', 'État'];
 
                         if (Auth::guard('admin')->user()->can('changer_etat_annonce')) {
                             $columns[] = 'Changer l\'état'; // Ajouter la colonne si la permission est présente
                         }
+                        $columns[] = 'Voir';
 
                         if (Auth::guard('admin')->user()->can('supprimer_annonce')) {
                             $columns[] = 'Supprimer'; // Ajouter la colonne si la permission est présente
@@ -91,7 +94,8 @@
                                             </form>
                                                     </td>
                                                   @endif
-
+                                                  <td><a href="{{ route('admin.annonce.show', $item) }}" class="btn btn-warning btn-sm"
+                                                    style="margin-right: 5px"><i class="fa-solid fa-eye "></i></a></td>
 
                                @if (Auth::guard('admin')->user()->can('supprimer_annonce'))
                                         <td style="text-align: center">

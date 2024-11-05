@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Home Page')
+@section('title', 'Annonces Fermees')
 
 
 @section('content')
@@ -11,7 +11,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">Annances fermées</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">/
+                <h4 class="content-title mb-0 my-auto">Annonces fermées</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">/
                     List</span>
             </div>
         </div>
@@ -37,7 +37,7 @@
                         if (Auth::guard('admin')->user()->can('changer_etat_annonce')) {
                             $columns[] = 'Changer l\'état'; // Ajouter la colonne si la permission est présente
                         }
-
+                        $columns[] = 'Voir';
                         if (Auth::guard('admin')->user()->can('supprimer_annonce')) {
                             $columns[] = 'Supprimer'; // Ajouter la colonne si la permission est présente
                         }// Toujours afficher la colonne Action
@@ -90,7 +90,8 @@
                                         </form>
                                                 </td>
                                               @endif
-
+                                              <td><a href="{{ route('admin.annonce.show', $item) }}" class="btn btn-warning btn-sm"
+                                                style="margin-right: 5px"><i class="fa-solid fa-eye "></i></a></td>
 
                            @if (Auth::guard('admin')->user()->can('supprimer_annonce'))
                                     <td style="text-align: center">

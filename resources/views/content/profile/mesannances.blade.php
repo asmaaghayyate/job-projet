@@ -37,7 +37,13 @@
      @foreach ($mesannancespubliee as $mesannance)
 
 		<tr>
-			<td >{{$mesannance->titre}}</td>
+
+			<td >
+
+<a href="{{route('showemplois',['annance' => $mesannance->id, 'slug' => $mesannance->slug])}}"
+    target="_blank"  style="color: blue; text-decoration: underline;"><i class="fas fa-external-link-alt"></i>
+    {{ $mesannance->titre }}</a>
+</td>
             <td >{{$mesannance->entreprise->name}}</td>
 			<td >{!!Str::limit($mesannance->description, 25, '...') !!}</td>
 

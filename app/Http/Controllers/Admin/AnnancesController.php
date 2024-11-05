@@ -95,6 +95,12 @@ public function destroy(Annance $annance){
 }
 
 
+public function show(Annance $annance){
+
+    return view("admin.content.annance.showannonce",compact('annance'));
+}
+
+
     public function titre(Request $request){
    $titre = $request->input('titre');
    $lesannances=Annance::where('titre' ,'like',$request->titre.'%')

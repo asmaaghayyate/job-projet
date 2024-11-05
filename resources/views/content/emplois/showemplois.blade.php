@@ -87,10 +87,9 @@
 
 
                             @if(auth()->check() && auth()->user()->id === $annance->user_id)
-                            <p class="alert alert-info">Vous êtes l'annonceur de cette annonce.</p>
-                            <a href="#" class="btn btn-secondary btn-lg" disabled>
-                                Déjà Créé
-                            </a>
+                            <p class="alert alert-info">Vous êtes l'annonceur de cette annonce
+                                vous ne pouvez pas postuler.</p>
+
                         @else
                             <a href="{{ route('postuleremplois', $annance->id) }}" class="btn btn-primary btn-lg">
                                 Postuler maintenant
