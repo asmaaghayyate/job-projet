@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Home Page')
+@section('title', 'Dashboard')
 
 
 @section('content')
@@ -142,7 +142,7 @@
                               </select>
                             </div>
                   <div>
-                    <canvas id="myLineChart" width="880" height="600"></canvas>
+                    <canvas id="myLineChart" width="880" height="485"></canvas>
 
                 </div>
 
@@ -265,15 +265,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
             <style>
                 #chartdiv {
                   width: 103%;
@@ -362,84 +353,6 @@
 
 
 @endsection
-
-
-@section('scripts')
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Year', 'Sales', 'Expenses'],
-                ['2013', 1000, 400],
-                ['2014', 1170, 460],
-                ['2015', 660, 1120],
-                ['2016', 1030, 540]
-            ]);
-
-            var options = {
-                title: 'Company Performance',
-                hAxis: {
-                    title: 'Year',
-                    titleTextStyle: {
-                        color: '#333'
-                    }
-                },
-                vAxis: {
-                    minValue: 0
-                }
-            };
-
-            var chart = new google.visualization.AreaChart(document.getElementById('chartOne'));
-            chart.draw(data, options);
-        }
-    </script>
-
-    <script type="text/javascript">
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Year', 'Sales', 'Expenses'],
-                ['2004', 1000, 400],
-                ['2005', 1170, 460],
-                ['2006', 660, 1120],
-                ['2007', 1030, 540]
-            ]);
-
-            var options = {
-                title: 'Company Performance',
-                curveType: 'function',
-                legend: {
-                    position: 'bottom'
-                }
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('chartTwo'));
-
-            chart.draw(data, options);
-        }
-    </script>
-    <!--Internal App calendar js -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-
-            });
-            calendar.render();
-        });
-    </script>
-@endsection
-
 
 
 

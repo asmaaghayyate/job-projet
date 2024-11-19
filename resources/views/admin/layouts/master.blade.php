@@ -13,7 +13,8 @@
     <title> Admin - @yield('title') </title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('assets2/img/brand/favicon.png') }}" type="image/x-icon" />
+   <!-- <link rel="icon" href="{{ asset('assets2/img/brand/favicon.png') }}" type="image/x-icon" />-->
+    <link rel="icon" href="{{ asset('assets/images/logo1.png') }}" type="image/x-icon" />
 
     <!-- Icons css -->
     <link href="{{ asset('assets2/css/icons.css') }} " rel="stylesheet">
