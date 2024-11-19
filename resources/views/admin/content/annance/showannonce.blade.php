@@ -29,12 +29,13 @@
 
                     <div class="row mb-3">
                         <!-- Image de l'entreprise -->
-                        <div class="col-md-4">
-                            <div class="card">
-                                      <img src="{{ $annance->entreprise->image ? asset('storage/' . $annance->entreprise->image) : asset('assets/images/job-list-logo-01.png') }}"
+                        <div class="col-md-3">
+                            <div class="card"  style="max-width: 90%; height: 70%;">
+          <img src="{{ $annance->entreprise->image ?
+              asset('storage/' . $annance->entreprise->image) : asset('assets/images/job-list-logo-01.png') }}"
                                      alt="Image de l'entreprise"
                                      class="card-img-top"
-                                     style="max-width: 100%; height: 100%; object-fit: cover;">
+                                     style="max-width: 100%; height: 100%; ">
                             </div>
                         </div>
 
