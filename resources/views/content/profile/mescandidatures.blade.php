@@ -125,10 +125,11 @@
       <div class="sixteen columns;margin-left:0%">
        <table class="manage-table resumes responsive-table" >
            <tr>
-               <th><i class="fa fa-file-text"></i> Titre</th>
-               <th><i class="fa fa-file-text"></i> Entreprise</th>
-               <th><i class="fa fa-map-marker-alt"></i> Type Emploi</th>
-               <th><i class="fa fa-calendar"></i> Date</th>
+            <th><i class="fa fa-file-text"></i> Titre</th>
+            <th><i class="fa fa-file-text"></i> Entreprise</th>
+            <th><i class="fa fa-briefcase"></i> Type Emploi</th> <!-- Icône adaptée pour le type d'emploi -->
+            <th><i class="fa fa-envelope"></i> Motivation</th>
+            <th><i class="fa fa-calendar-alt"></i> Date</th>
 
 
            </tr>
@@ -138,13 +139,15 @@
 
            <tr>
                <td >
-   <a href="{{route('showemplois',$candidature->annance->slug)}}"
+   <a href="{{route('showemplois',['annance' => $candidature->annance->id, 'slug' => $candidature->annance->slug])}}"
+    
     target="_blank"  style="color: blue; text-decoration: underline;"><i class="fas fa-external-link-alt"></i>
     {{ $candidature->annance->titre }}</a>
 
                </td>
                <td >{{$candidature->annance->entreprise->name}}</td>
                 <td>{{$candidature->annance->type_emploi}}</td>
+                <td>{!!$candidature->lettre_motivation!!}</td>
                <td>{{$candidature->created_at}}</td>
 
 
