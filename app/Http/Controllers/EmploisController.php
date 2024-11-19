@@ -88,7 +88,6 @@ public function filterEmplois(Request $request) {
        // dd( "3".$annancescount);
     }
 
-
    //dd($query->get());
     //$annances->get();
 
@@ -96,6 +95,7 @@ public function filterEmplois(Request $request) {
 
     // Si tu veux envoyer une seule catégorie, tu peux le faire ainsi :
    // $categorie = !empty($categories) ? $categories[0] : null;
+//dd($annancescount);
 
     return view("content.emplois.emplois",compact('annances','annancescount'));
 }

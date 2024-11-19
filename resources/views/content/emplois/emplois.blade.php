@@ -34,7 +34,7 @@
 		<ul class="job-list full">
     @foreach ($annances as $annance )
             <li class="">
-                <a href="{{route('showemplois',$annance->slug)}}">
+                <a href="{{route('showemplois',['annance' => $annance->id, 'slug' => $annance->slug])}}">
 				<img src="{{ asset('assets/images/job-list-logo-01.png')}}" alt="">
 				<div class="job-list-content">
                     <h4>	<strong>{{$annance->categorie}}</strong> </h4>
