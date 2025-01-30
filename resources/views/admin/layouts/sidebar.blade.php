@@ -17,15 +17,10 @@
         <a class="logo-icon mobile-logo icon-light active" href="#">
 
 
-
-
             <img
                 src="{{ asset('assets/images/logo1.png') }}" class="logo-icon" alt="logo">
             
             
-
-
-
             </a>
         <a class="logo-icon mobile-logo icon-dark active" href="#">
             <img

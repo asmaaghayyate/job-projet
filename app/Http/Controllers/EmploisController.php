@@ -49,7 +49,7 @@ class EmploisController extends Controller
 
 public function filterEmplois(Request $request) {
 
-    //dd($request->categorie);
+   // dd($request->categorie);
    // $query = query();
     if (!empty($request->categorie && empty($request->ville))) {
 

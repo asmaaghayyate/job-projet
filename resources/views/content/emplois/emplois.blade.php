@@ -27,7 +27,7 @@
 
 		<form action="#" method="get" class="list-search">
 			<button><i class="fa fa-search"></i></button>
-			<input type="text" placeholder="job title, keywords or company name" value=""/>
+			<input type="text" placeholder="titre " value=""/>
 			<div class="clearfix"></div>
 		</form>
 
@@ -41,7 +41,6 @@
 				<h4>	<strong>{{$annance->titre}}</strong> </h4>
 
 					<div class="job-icons">
-
 
                         <h4>
                             @if ($annance->type_emploi=="stage")
